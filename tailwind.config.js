@@ -12,8 +12,8 @@ export default {
         roboto: ["Roboto"],
       },
       gridTemplateRows: {
-        layout: "150px 2fr 1fr",
-        layout2: "100px 1fr 1fr",
+        layout: "125px 2fr 1fr",
+        layout2: "65px 1fr 1fr",
       },
     },
   },

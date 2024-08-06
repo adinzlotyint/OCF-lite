@@ -1,6 +1,6 @@
 const NavBar = () => {
   return (
-    <div className="z-50 xl:static fixed top-0 left-0 right-0 flex bg-zinc-100 xl:border-transparent border border-zinc-200 xl:bg-white m-8 rounded-2xl h-16 justify-between items-center shadow-md">
+    <div className="z-50 fixed flex top-0 left-0 right-0 bg-white h-16 justify-between items-center shadow-md hover:shadow-lg transition-all xl:ml-4 xl:mt-8 xl:mr-8 xl:static xl:border-transparent xl:rounded-2xl">
       <p className="font-bold text-2xl ml-2 font-roboto text-secondary">
         <a className="btn btn-ghost text-xl">OCF lite</a>
       </p>
@@ -27,7 +27,7 @@ const NavBar = () => {
         </div>
         <ul
           tabIndex={0}
-          className="font-roboto menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2 shadow-lg right-0 "
+          className="font-roboto menu menu-sm dropdown-content bg-primary text-white rounded-box z-[1] mt-3 w-64 xl:w-52 p-2 shadow-lg right-0 "
         >
           <li>
             <a>Reporting</a>

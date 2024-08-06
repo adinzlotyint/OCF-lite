@@ -8,7 +8,7 @@ const TabSwitch = ({ onSelectTab, activeTab }: Props) => {
     <>
       <div
         role="tablist"
-        className="relative flex justify-between bg-gray-200 rounded-lg p-1 mt-6"
+        className="relative flex justify-between bg-bgcolor rounded-lg p-1 mt-6"
       >
         <button
           onClick={() => {
