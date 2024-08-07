@@ -3,6 +3,7 @@ import { FaReact } from "react-icons/fa";
 import TabSwitch from "./TabSwitch.tsx";
 import RadioButtons from "./RadioButtons";
 import UploadTemplate from "./UploadTemplate.tsx";
+import { motion } from "framer-motion";
 
 const ConfigPanel = () => {
   const [uploadTab, setUploadTab] = useState("upload");
@@ -10,14 +11,26 @@ const ConfigPanel = () => {
 
   return (
     <div className="flex flex-col bg-white mt-8 xl:mr-4 mr-8 mb-8 ml-8 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all">
-      <div className="w-full h-24 sm:h-32 xl:h-36 2xl:h-48 max-h-48 rounded-2xl bg-primary flex justify-center">
-        <FaReact
-          className="object-fill w-auto h-full p-4 sm:p-6 xl:p-8 2xl:p-12"
-          color="white"
-        />
+      {/* Header section */}
+      <div className="w-full rounded-2xl bg-primary flex justify-center">
+        <div className="p-[2vw]">
+          {/* Animated React icon */}
+          <motion.div
+            whileHover={{ scale: 1.05, rotate: 360 }}
+            className="h-[10vh] flex items-center justify-center"
+          >
+            <FaReact className="w-full h-full" color="white" />
+          </motion.div>
+        </div>
       </div>
+
+      {/* Radio buttons for selecting template for dropdown lists content */}
       <RadioButtons onChange={(state) => setUploadTemplate(state)} />
-      {uploadTemplate == "Upload" && <UploadTemplate />}
+
+      {/* Upload template for dropdown lists content */}
+      <UploadTemplate isVisible={uploadTemplate} />
+
+      {/* Switch to change form for entering new data or edit existing one accordingly */}
       <TabSwitch
         uploadTab={uploadTab}
         onSelectTab={(TabName) => setUploadTab(TabName)}

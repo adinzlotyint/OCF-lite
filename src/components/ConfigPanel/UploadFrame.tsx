@@ -1,5 +1,8 @@
+import "../../styles/UploadFrame.css";
+import { motion } from "framer-motion";
+
 interface Props {
-  onUpload: () => void;
+  onUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const UploadFrame = ({ onUpload }: Props) => {
@@ -8,11 +11,14 @@ const UploadFrame = ({ onUpload }: Props) => {
       <label className="cursor-pointer">
         <input onChange={onUpload} type="file" hidden />
 
-        <div className="w-full py-2 mt-1 bg-bgcolor rounded-2xl border border-gray-300 gap-1 grid border-dashed shadow-inner">
+        <motion.div
+          className="upload-frame w-full py-2 mt-1 bg-bgcolor rounded-2xl border border-gray-300 gap-1 grid border-dashed shadow-inner"
+          whileHover={{ scale: 1.02 }}
+        >
           <div className="grid gap-1">
             <input type="file" hidden />
-            <svg
-              className="mx-auto "
+            <motion.svg
+              className="mx-auto upload-frame-svg"
               width="40"
               height="40"
               viewBox="0 0 40 40"
@@ -26,7 +32,7 @@ const UploadFrame = ({ onUpload }: Props) => {
                   fill="#212121"
                 />
               </g>
-            </svg>
+            </motion.svg>
             <h2 className="text-center text-gray-400 text-xs">JSON file</h2>
           </div>
           <div className="grid gap-2">
@@ -37,7 +43,7 @@ const UploadFrame = ({ onUpload }: Props) => {
               </span>
             </h4>
           </div>
-        </div>
+        </motion.div>
       </label>
     </>
   );

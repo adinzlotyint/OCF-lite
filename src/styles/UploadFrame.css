@@ -1,0 +1,7 @@
+.upload-frame .upload-frame-svg {
+  transition: transform 0.3s ease;
+}
+
+.upload-frame:hover .upload-frame-svg {
+  transform: rotate(20deg);
+}
