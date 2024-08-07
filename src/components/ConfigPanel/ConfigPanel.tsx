@@ -5,7 +5,8 @@ import RadioButtons from "./RadioButtons";
 import UploadTemplate from "./UploadTemplate.tsx";
 
 const ConfigPanel = () => {
-  const [activeTab, setActiveTab] = useState("upload"); // Default active tab
+  const [uploadTab, setUploadTab] = useState("upload");
+  const [uploadTemplate, setUploadTemplate] = useState("Default");
 
   return (
     <div className="flex flex-col bg-white mt-8 xl:mr-4 mr-8 mb-8 ml-8 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all">
@@ -15,12 +16,12 @@ const ConfigPanel = () => {
           color="white"
         />
       </div>
+      <RadioButtons onChange={(state) => setUploadTemplate(state)} />
+      {uploadTemplate == "Upload" && <UploadTemplate />}
       <TabSwitch
-        activeTab={activeTab}
-        onSelectTab={(TabName) => setActiveTab(TabName)}
+        uploadTab={uploadTab}
+        onSelectTab={(TabName) => setUploadTab(TabName)}
       />
-      <RadioButtons />
-      <UploadTemplate />
     </div>
   );
 };

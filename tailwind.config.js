@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -14,6 +14,15 @@ export default {
       gridTemplateRows: {
         layout: "125px 2fr 1fr",
         layout2: "65px 1fr 1fr",
+      },
+      keyframes: {
+        appear: {
+          "0%": { opacity: 0, transform: "translateY(-20px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        appear: "appear 0.4s ease-out forwards",
       },
     },
   },

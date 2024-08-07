@@ -1,9 +1,9 @@
 interface Props {
   onSelectTab: (TabName: string) => void;
-  activeTab: string;
+  uploadTab: string;
 }
 
-const TabSwitch = ({ onSelectTab, activeTab }: Props) => {
+const TabSwitch = ({ onSelectTab, uploadTab }: Props) => {
   return (
     <>
       <div
@@ -11,30 +11,24 @@ const TabSwitch = ({ onSelectTab, activeTab }: Props) => {
         className="relative flex justify-between bg-bgcolor rounded-lg p-1 mt-6 shadow-inner"
       >
         <button
-          onClick={() => {
-            onSelectTab("scratch");
-            console.log("scratch");
-          }}
+          onClick={() => onSelectTab("scratch")}
           className={`relative z-20 flex-1 py-1 px-4 rounded-lg transition-colors duration-300 xl:text-xs 2xl:text-base  ${
-            activeTab === "scratch" ? "text-white" : "text-primary"
+            uploadTab === "scratch" ? "text-white" : "text-primary"
           }`}
         >
           Create From Scratch
         </button>
         <button
-          onClick={() => {
-            onSelectTab("upload");
-            console.log("upload");
-          }}
+          onClick={() => onSelectTab("upload")}
           className={`relative z-20 flex-1 py-1 px-4 rounded-lg transition-colors duration-300 xl:text-xs 2xl:text-base ${
-            activeTab === "upload" ? "text-white" : "text-primary"
+            uploadTab === "upload" ? "text-white" : "text-primary"
           }`}
         >
           Upload Existing Data
         </button>
         <div
           className={`z-10 absolute top-0 bottom-0 left-1 mt-1 mb-1 mx-1 w-[calc(50%-0.5rem)] bg-primary shadow-lg rounded-lg transition-transform duration-300 ${
-            activeTab === "upload" ? "translate-x-full" : ""
+            uploadTab === "upload" ? "translate-x-full" : ""
           }`}
         ></div>
       </div>

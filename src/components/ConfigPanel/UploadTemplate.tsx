@@ -11,16 +11,18 @@ const UploadTemplate = () => {
 
   return (
     <>
-      <p className="ml-4 font-roboto text-base text-primary mt-4">
-        Upload template
-      </p>
-      {!showRemoveFrame && (
-        <UploadFrame onUpload={() => setShowRemoveFrame(true)}></UploadFrame>
-      )}
-      {showRemoveFrame && (
-        <RemoveFrame></RemoveFrame>
-        // onRemove={() => setShowRemoveFrame(false)}
-      )}
+      <div className="animate-appear">
+        <p className="ml-4 font-roboto text-base text-primary mt-4">
+          Upload template
+        </p>
+        {!showRemoveFrame && (
+          <UploadFrame onUpload={() => setShowRemoveFrame(true)}></UploadFrame>
+        )}
+        {showRemoveFrame && (
+          <RemoveFrame></RemoveFrame>
+          // onRemove={() => setShowRemoveFrame(false)}
+        )}
+      </div>
     </>
   );
 };
