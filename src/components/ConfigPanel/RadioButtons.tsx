@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 interface Props {
   onChange: (state: string) => void;
 }
@@ -8,15 +6,12 @@ const RadioButtons = ({ onChange }: Props) => {
   return (
     <>
       <div>
-        <p className="font-roboto text-base text-primary mt-4">
-          Select template
+        <p className="font-roboto text-sm font-bold text-primary mt-4">
+          Select drop-down lists content
         </p>
         <div className="grid grid-cols-2 grid-rows-1 items-center mt-1">
           <div className="flex items-center">
-            <motion.label
-              className="flex items-center cursor-pointer"
-              whileHover={{ scale: 1.02 }}
-            >
+            <label className="flex items-center cursor-pointer">
               <input
                 type="radio"
                 name="radio-1"
@@ -25,27 +20,24 @@ const RadioButtons = ({ onChange }: Props) => {
                 onClick={() => onChange("Default")}
                 defaultChecked
               />
-              <span className="label-text xl:text-xs 2xl:text-sm ml-2">
-                Default template
+              <span className="label-text xl:text-sm 2xl:text-sm ml-2 font-roboto text-gray-700">
+                Default emission sources
               </span>
-            </motion.label>
+            </label>
           </div>
 
           <div className="flex items-center">
-            <motion.label
-              className="flex items-center cursor-pointer"
-              whileHover={{ scale: 1.02 }}
-            >
+            <label className="flex items-center cursor-pointer">
               <input
                 type="radio"
                 name="radio-1"
                 className="radio w-4 h-4 static"
                 onClick={() => onChange("Upload")}
               />
-              <span className="label-text xl:text-xs 2xl:text-sm ml-2">
-                Custom template
+              <span className="label-text xl:text-sm 2xl:text-sm ml-2 font-roboto text-gray-700">
+                Custom from file
               </span>
-            </motion.label>
+            </label>
           </div>
         </div>
       </div>

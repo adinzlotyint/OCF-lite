@@ -8,3 +8,8 @@
 .btn-custom {
     @apply font-bold font-roboto mr-8 text-secondary hover:text-black relative;
   }
+
+.input-custom {
+  @apply row-start-2 border border-spacing-1 mr-2 rounded-md text-xs font-roboto h-8;
+  text-indent: 1em;
+}

@@ -21,7 +21,7 @@ function App() {
             <ContentContainer />
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full mt-8">
           <Footer />
         </div>
       </div>

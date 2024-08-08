@@ -12,8 +12,12 @@ module.exports = {
         roboto: ["Roboto"],
       },
       gridTemplateRows: {
-        layout: "125px 2fr 1fr",
-        layout2: "65px 1fr 1fr",
+        layout: "125px auto",
+        layout2: "65px auto 1fr",
+        layoutContentPanel: "50px auto 1fr auto",
+      },
+      gridTemplateColumns: {
+        layoutFormGrid: "1fr 1fr 1fr 2fr auto",
       },
       keyframes: {
         appear: {

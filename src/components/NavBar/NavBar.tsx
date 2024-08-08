@@ -5,7 +5,7 @@ const NavBar = () => {
       <p className="font-bold text-2xl ml-2 font-roboto text-secondary">
         <a className="btn btn-ghost text-xl">OCF lite</a>
       </p>
-      <div className="dropdown">
+      <div className="dropdown dropdown-bottom dropdown-end">
         {/* Dropdown button */}
         <div
           tabIndex={0}
@@ -30,7 +30,7 @@ const NavBar = () => {
         {/* Dropdown menu */}
         <ul
           tabIndex={0}
-          className="font-roboto menu menu-sm dropdown-content bg-primary text-white rounded-box z-[1] mt-3 w-64 xl:w-52 p-2 shadow-lg right-0 "
+          className="font-roboto menu menu-sm dropdown-content bg-primary text-white rounded-box z-[1] mt-3 w-64 xl:w-52 p-2 shadow-lg"
         >
           <li>
             <a>Reporting</a>
