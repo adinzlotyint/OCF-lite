@@ -1,0 +1,43 @@
+{
+  "Scope 1": {
+    "Petrol": {
+      "id": "1",
+      "name": "Petrol",
+      "units": ["liters", "gallons"]
+    },
+    "Diesel": {
+      "id": "2",
+      "name": "Diesel",
+      "units": ["liters", "gallons"]
+    },
+    "Biogas": {
+      "id": "3",
+      "name": "Biogas",
+      "units": ["liters", "gallons"]
+    }
+  },
+  "Scope 2": {
+    "Electricity": {
+      "id": "3",
+      "name": "Electricity",
+      "units": ["kWh", "MWh"]
+    },
+    "Heat": {
+      "id": "4",
+      "name": "Heat",
+      "units": ["MJ", "kWh"]
+    }
+  },
+  "Scope 3": {
+    "Waste": {
+      "id": "5",
+      "name": "Waste",
+      "units": ["kg", "tonnes"]
+    },
+    "Water": {
+      "id": "6",
+      "name": "Water",
+      "units": ["liters", "cubic meters"]
+    }
+  }
+}

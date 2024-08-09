@@ -14,7 +14,7 @@ const ContentContainer = () => {
       <InputForm />
       <DataTable />
       <div className="flex justify-center">
-        <button className="btn btn-neutral bg-primary hover:bg-primary shadow-lg rounded-lg w-1/4 font-roboto font-normal text-white">
+        <button className="btn btn-neutral bg-primary hover:bg-primary shadow-lg rounded-lg w-1/4 min-h-8 h-6 font-roboto font-normal text-white">
           Download to file
         </button>
       </div>
