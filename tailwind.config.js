@@ -15,9 +15,10 @@ module.exports = {
         layout: "125px auto",
         layout2: "65px auto 1fr",
         layoutContentPanel: "50px auto 1fr auto",
+        layoutFormGridlg: "auto",
       },
       gridTemplateColumns: {
-        layoutFormGrid: "1fr 1fr 1fr 1fr 1fr auto",
+        layoutFormGrid: "2fr 2fr 1fr 1fr 2fr auto",
       },
       keyframes: {
         appear: {

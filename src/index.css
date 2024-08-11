@@ -10,7 +10,7 @@
   }
 
 .input-custom {
-  @apply row-start-2 border border-spacing-1 mr-2 rounded-md text-xs font-roboto h-8;
+  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto mr-2 ;
   text-indent: 1em;
 }
 

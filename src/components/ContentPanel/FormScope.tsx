@@ -24,12 +24,12 @@ const FormScope1 = ({
   return (
     <>
       {" "}
-      <p className="col-start-1 row-start-1 text-xs font-bold font-roboto ml-1">
+      <p className="xl:col-start-1 xl:row-start-1 row-start-1 text-xs font-bold font-roboto ml-1">
         Activity
       </p>
       <select
         onChange={handleTypeChange}
-        className="input-custom col-start-1"
+        className="input-custom xl:col-start-1 xl:row-start-2 row-start-2 col-start-1"
         value={selectedType}
       >
         <option value="" disabled selected hidden>
@@ -41,12 +41,12 @@ const FormScope1 = ({
           </option>
         ))}
       </select>
-      <p className="col-start-2 row-start-1 text-xs font-bold font-roboto ml-1">
+      <p className="xl:col-start-2 xl:row-start-1 row-start-3 text-xs font-bold font-roboto ml-1">
         Emission source
       </p>
       <select
         onChange={handleNameChange}
-        className="input-custom col-start-2"
+        className="input-custom xl:col-start-2 xl:row-start-2 row-start-4"
         value={selectedName}
       >
         <option value="" disabled selected hidden>
@@ -58,16 +58,19 @@ const FormScope1 = ({
           </option>
         ))}
       </select>
-      <p className="col-start-3 row-start-1 text-xs font-bold font-roboto ml-1">
+      <p className="xl:col-start-3 xl:row-start-1 row-start-5 text-xs font-bold font-roboto ml-1">
         Consumption
       </p>
-      <input type="text" className="input-custom col-start-3" />
-      <p className="col-start-4 row-start-1 text-xs font-bold font-roboto ml-1">
-        Consumption unit
+      <input
+        type="text"
+        className="input-custom xl:col-start-3 xl:row-start-2 row-start-6"
+      />
+      <p className="xl:col-start-4 xl:row-start-1 row-start-7  text-xs font-bold font-roboto ml-1">
+        Unit
       </p>
       <select
         onChange={handleUnitChange}
-        className="input-custom col-start-4"
+        className="input-custom xl:col-start-4 xl:row-start-2 row-start-8"
         value={selectedUnit}
       >
         <option value="" disabled selected hidden>
@@ -79,10 +82,13 @@ const FormScope1 = ({
           </option>
         ))}
       </select>
-      <p className="col-start-5 row-start-1 text-xs font-bold font-roboto ml-1">
+      <p className="xl:col-start-5 xl:row-start-1 row-start-9 text-xs font-bold font-roboto ml-1">
         Data source
       </p>
-      <input type="text" className="input-custom col-start-5" />
+      <input
+        type="text"
+        className="input-custom xl:col-start-5 xl:row-start-2 row-start-10"
+      />
     </>
   );
 };
