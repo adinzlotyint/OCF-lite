@@ -10,8 +10,12 @@
   }
 
 .input-custom {
-  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto mr-2 ;
+  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto mr-2 xl:mt-0 mt-1;
   text-indent: 1em;
+}
+
+.input-headers {
+  @apply text-xs font-bold font-roboto ml-1 mt-1 xl:mt-0;
 }
 
 .input-custom:focus {

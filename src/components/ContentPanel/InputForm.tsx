@@ -1,7 +1,7 @@
 import { useState } from "react";
 import data from "../../configs/DefaultTemplate.json";
 import AddButton from "./AddButton";
-import FormScope from "./FormScope";
+import FormBody from "./FormBody";
 import FormHeader from "./FormHeader";
 
 export interface Data {
@@ -71,7 +71,7 @@ const InputForm: React.FC = () => {
           scopesArray={scopesArray}
         />
         <form className="grid xl:grid-cols-layoutFormGrid lg:grid-cols-1 lg:grid-rows-layoutFormGridlg">
-          <FormScope
+          <FormBody
             nameList={nameList}
             typeList={typeList}
             unitList={unitList}

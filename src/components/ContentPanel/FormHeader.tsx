@@ -20,11 +20,7 @@ const FormHeader = ({
           Select scope
         </option>
         {scopesArray.map((scope) => (
-          <option
-            key={scope}
-            value={scope}
-            className="bg-primary text-white hover:bg-secondary"
-          >
+          <option key={scope} value={scope} className="bg-primary text-white">
             {scope}
           </option>
         ))}
