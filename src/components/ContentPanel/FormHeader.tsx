@@ -13,12 +13,7 @@ const FormHeader = ({
 }: Props) => {
   return (
     <>
-      {" "}
-      {/* font-roboto menu menu-sm dropdown-content bg-primary text-white rounded-box z-[1] mt-3 w-64 xl:w-52 p-2 shadow-lg */}
       <select onChange={handleScopeChange} className="select-custom font-bold">
-        <option value="" disabled selected hidden>
-          Select scope
-        </option>
         {scopesArray.map((scope) => (
           <option key={scope} value={scope} className="bg-primary text-white">
             {scope}

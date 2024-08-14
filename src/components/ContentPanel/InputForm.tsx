@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "../../configs/DefaultTemplate.json";
-import FormBody from "./FormBody";
+import FormBody, { customData } from "./FormBody";
 import FormHeader from "./FormHeader";
 
 export interface Data {
@@ -13,7 +13,11 @@ export interface Data {
   };
 }
 
-const InputForm: React.FC = () => {
+interface InputFormProps {
+  setData: React.Dispatch<React.SetStateAction<customData[]>>;
+}
+
+const InputForm: React.FC<InputFormProps> = ({ setData }) => {
   const [selectedScope, setSelectedScope] = useState<string>("Scope 1");
   const [selectedType, setSelectedType] = useState<string>("");
   const [selectedName, setSelectedName] = useState<string>("");
@@ -21,6 +25,14 @@ const InputForm: React.FC = () => {
   const [typeList, setTypeList] = useState<string[]>([]);
   const [nameList, setNameList] = useState<string[]>([]);
   const [unitList, setUnitList] = useState<string[]>([]);
+
+  const [errors, setErrors] = useState({
+    activity: "",
+    emissionSource: "",
+    consumption: "",
+    unit: "",
+    dataSource: "",
+  });
 
   const scopesArray = Object.keys(data);
 
@@ -37,6 +49,11 @@ const InputForm: React.FC = () => {
     setSelectedName("");
     setSelectedUnit("");
   };
+
+  useEffect(() => {
+    const types = Object.keys(someObj["Scope 1"]);
+    setTypeList(types);
+  }, []);
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const type = event.target.value;
@@ -61,6 +78,14 @@ const InputForm: React.FC = () => {
     setSelectedUnit(name);
   };
 
+  let errVal = "";
+  const hasErrors = () => {
+    Object.values(errors).some((error) =>
+      error !== "" ? (errVal = error) : (errVal = "")
+    );
+    return errVal;
+  };
+
   return (
     <>
       <div className="border border-spacing-1 rounded-md my-3 p-4">
@@ -80,9 +105,15 @@ const InputForm: React.FC = () => {
             handleTypeChange={handleTypeChange}
             handleNameChange={handleNameChange}
             handleUnitChange={handleUnitChange}
+            setData={setData}
+            changeError={(newErrors) => {
+              setErrors(newErrors);
+            }}
           />
-          {/* <AddButton /> */}
         </form>
+        {hasErrors() !== "" && (
+          <p className="text-red-500 text-sm mt-2">{errVal}</p>
+        )}
       </div>
     </>
   );

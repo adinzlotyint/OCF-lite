@@ -11,6 +11,22 @@ interface Props {
   handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   handleNameChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   handleUnitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  changeError: (errors: {
+    activity: string;
+    emissionSource: string;
+    consumption: string;
+    unit: string;
+    dataSource: string;
+  }) => void;
+  setData: React.Dispatch<React.SetStateAction<customData[]>>;
+}
+
+export interface customData {
+  activity: string;
+  emissionSource: string;
+  consumption: string;
+  unit: string;
+  dataSource: string;
 }
 
 const FormBody = ({
@@ -23,38 +39,51 @@ const FormBody = ({
   handleTypeChange,
   handleNameChange,
   handleUnitChange,
+  changeError,
+  setData,
 }: Props) => {
-  const onSubmit = (data: FormData) => {
-    console.log("Form data:", data);
-    // Add data to your table or state here
+  const [dataSource, setDataSource] = useState<string>("");
+  const [consumption, setConsumption] = useState<string>("");
+
+  const handleDataSourceChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDataSource(event.target.value);
   };
 
-  const [errors, setErrors] = useState({
-    activity: "",
-    emissionSource: "",
-    consumption: "",
-    unit: "",
-    dataSource: "",
-  });
+  const handleConsumptionChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setConsumption(event.target.value);
+  };
 
   const handleSubmit = () => {
     const newErrors = {
       activity: selectedType === "" ? "Please select an activity" : "",
       emissionSource:
         selectedName === "" ? "Please select an emission source" : "",
-      consumption: "",
+      consumption: consumption === "" ? "Please enter a consumption" : "",
       unit: selectedUnit === "" ? "Please select a unit" : "",
-      dataSource: "",
+      dataSource: dataSource === "" ? "Please enter a data source" : "",
     };
+    changeError(newErrors);
 
-    setErrors(newErrors);
-
-    const hasErrors = Object.values(newErrors).some((error) => error !== "");
-
-    if (!hasErrors) {
-      console.log("Form submitted successfully");
-    } else {
-      console.log("Form has errors, not submitted");
+    if (
+      newErrors.activity === "" &&
+      newErrors.emissionSource === "" &&
+      newErrors.consumption === "" &&
+      newErrors.unit === "" &&
+      newErrors.dataSource === ""
+    ) {
+      const customData = {
+        activity: selectedType,
+        emissionSource: selectedName,
+        consumption: consumption,
+        unit: selectedUnit,
+        dataSource: dataSource,
+      };
+      setData((prevData) => [...prevData, customData]);
+      console.log("Form data:", customData);
     }
   };
 
@@ -69,7 +98,7 @@ const FormBody = ({
         className="input-custom xl:col-start-1 xl:row-start-2 row-start-2 col-start-1"
         value={selectedType}
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           Select activity
         </option>
         {typeList.map((type) => (
@@ -86,7 +115,7 @@ const FormBody = ({
         className="input-custom xl:col-start-2 xl:row-start-2 row-start-4"
         value={selectedName}
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           Select source
         </option>
         {nameList.map((name) => (
@@ -101,6 +130,8 @@ const FormBody = ({
       <input
         type="text"
         className="input-custom xl:col-start-3 xl:row-start-2 row-start-6 pl-1"
+        value={consumption}
+        onChange={handleConsumptionChange}
       />
       <p className="xl:col-start-4 xl:row-start-1 row-start-7 input-headers">
         Unit
@@ -110,7 +141,7 @@ const FormBody = ({
         className="input-custom xl:col-start-4 xl:row-start-2 row-start-8"
         value={selectedUnit}
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           Select unit
         </option>
         {unitList.map((unit) => (
@@ -123,8 +154,11 @@ const FormBody = ({
         Data source
       </p>
       <input
+        id="dataSource"
         type="text"
         className="input-custom xl:col-start-5 xl:row-start-2 row-start-10 pl-1"
+        value={dataSource}
+        onChange={handleDataSourceChange}
       />
       <AddButton
         onClick={handleSubmit}

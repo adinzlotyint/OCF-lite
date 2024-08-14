@@ -1,31 +1,38 @@
 import React from "react";
+import { customData } from "./FormBody";
 
-const DataTable = () => {
-  return <div className="border border-spacing-1 rounded-xl mb-3"></div>;
+interface DataTableProps {
+  data: customData[];
+}
+
+const DataTable: React.FC<DataTableProps> = ({ data }) => {
+  return (
+    <div className="border border-spacing-1 rounded-xl mb-3">
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Emission Source</th>
+            <th>Consumption</th>
+            <th>Unit</th>
+            <th>Data Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index}>
+              <td>{item.activity}</td>
+              <td>{item.emissionSource}</td>
+              <td>{item.consumption}</td>
+              <td>{item.unit}</td>
+              <td>{item.dataSource}</td>
+              <button className="btn btn-ghost btn-xs">remove</button>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default DataTable;
-
-// const DisplayData = selectedFile.map((info) => {
-//     return (
-//       <tr key={info.id}>
-//         <td>{info.id}</td>
-//         <td>{info.name}</td>
-//       </tr>
-//     );
-//   });
-
-//   {selectedFile.length !== 0 && (
-//     <div>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Sr.NO</th>
-//             <th>Name</th>
-//             <th>City</th>
-//           </tr>
-//         </thead>
-//         <tbody>{DisplayData}</tbody>
-//       </table>
-//     </div>
-//   )}
