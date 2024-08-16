@@ -17,7 +17,7 @@ function App() {
           <div className="w-full xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-4 col-start-1 row-start-2">
             <ConfigPanel />
           </div>
-          <div className="w-full xl:col-start-2 xl:row-start-2 xl:row-end-3 col-start-1 row-start-3">
+          <div className="w-full xl:col-start-2 xl:row-start-2 xl:row-end-4 h-full col-start-1 row-start-3">
             <ContentContainer />
           </div>
         </div>
