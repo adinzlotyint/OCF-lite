@@ -18,7 +18,9 @@ module.exports = {
         layoutFormGridlg: "auto",
       },
       gridTemplateColumns: {
-        layoutFormGrid: "2fr 2fr 1fr 1fr 2fr auto",
+        layoutFormGrid:
+          "minmax(150px, 2fr) minmax(150px, 2fr) 1fr 1fr 2fr auto",
+        footerGrid: "15% 20% 5% 20% 5% 20% 15%",
       },
       keyframes: {
         appear: {

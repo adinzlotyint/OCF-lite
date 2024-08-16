@@ -19,6 +19,7 @@ interface Props {
     dataSource: string;
   }) => void;
   setData: React.Dispatch<React.SetStateAction<customData[]>>;
+  clearForm: () => void;
 }
 
 export interface customData {
@@ -41,6 +42,7 @@ const FormBody = ({
   handleUnitChange,
   changeError,
   setData,
+  clearForm,
 }: Props) => {
   const [dataSource, setDataSource] = useState<string>("");
   const [consumption, setConsumption] = useState<string>("");
@@ -85,6 +87,10 @@ const FormBody = ({
       setData((prevData) => [...prevData, customData]);
       console.log("Form data:", customData);
     }
+
+    setConsumption("");
+    setDataSource("");
+    clearForm();
   };
 
   return (

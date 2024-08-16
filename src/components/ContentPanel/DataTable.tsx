@@ -7,7 +7,7 @@ interface DataTableProps {
 
 const DataTable: React.FC<DataTableProps> = ({ data }) => {
   return (
-    <div className="border border-spacing-1 rounded-xl mb-3">
+    <div className="border border-spacing-1 rounded-xl mb-3 overflow-auto">
       <table className="table">
         <thead>
           <tr>

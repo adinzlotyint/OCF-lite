@@ -86,6 +86,12 @@ const InputForm: React.FC<InputFormProps> = ({ setData }) => {
     return errVal;
   };
 
+  const clearForm = () => {
+    setSelectedType("");
+    setSelectedName("");
+    setSelectedUnit("");
+  };
+
   return (
     <>
       <div className="border border-spacing-1 rounded-md my-3 p-4">
@@ -109,6 +115,7 @@ const InputForm: React.FC<InputFormProps> = ({ setData }) => {
             changeError={(newErrors) => {
               setErrors(newErrors);
             }}
+            clearForm={clearForm}
           />
         </form>
         {hasErrors() !== "" && (
