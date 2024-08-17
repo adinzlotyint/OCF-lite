@@ -27,3 +27,8 @@
 .select-custom:focus {
   outline: none; /* Remove the focus outline */
 }
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
