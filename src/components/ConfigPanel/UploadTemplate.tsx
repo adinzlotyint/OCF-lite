@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import UploadFrame from "./BeforeTemplateUploadFrame";
-import FileFrame from "./AfterTemplateUploadFrame";
 import { motion } from "framer-motion";
 import Ajv, { JSONSchemaType } from "ajv";
 
@@ -32,9 +31,6 @@ const validateTemplate = ajv.compile(templateSchema);
 
 const UploadTemplate = ({ isVisible }: Props) => {
   const [selectedFile, setSelectedFile] = useState<Template[]>([]);
-  const [progressbar, setProgressbar] = useState(0);
-  const [uploadStatus, setUploadStatus] = useState(false); // select | upload | remove
-  const [fileName, setFileName] = useState("");
 
   // Function to store the uploaded file in the state and update the dropdown lists accordingly
   const handleTemplateUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,8 +60,6 @@ const UploadTemplate = ({ isVisible }: Props) => {
     }
   };
 
-  const handleRemove = () => {};
-
   return (
     <>
       <motion.div
@@ -74,10 +68,9 @@ const UploadTemplate = ({ isVisible }: Props) => {
             ? { opacity: 1, display: "block" }
             : { opacity: 0, transitionEnd: { display: "none" } }
         }
+        transition={{ duration: 0.2 }}
+        className="mt-4"
       >
-        <p className="font-roboto text-sm font-bold text-primary mt-4">
-          Upload template
-        </p>
         {selectedFile.length === 0 && (
           <UploadFrame onUpload={handleTemplateUpload} />
         )}

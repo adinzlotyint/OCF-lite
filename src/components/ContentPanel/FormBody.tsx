@@ -8,6 +8,7 @@ interface Props {
   selectedUnit: string;
   selectedType: string;
   selectedName: string;
+  selectedScope: string;
   handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   handleNameChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   handleUnitChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export interface customData {
+  scope: string;
   activity: string;
   emissionSource: string;
   consumption: string;
@@ -37,6 +39,7 @@ const FormBody = ({
   selectedUnit,
   selectedType,
   selectedName,
+  selectedScope,
   handleTypeChange,
   handleNameChange,
   handleUnitChange,
@@ -64,7 +67,12 @@ const FormBody = ({
       activity: selectedType === "" ? "Please select an activity" : "",
       emissionSource:
         selectedName === "" ? "Please select an emission source" : "",
-      consumption: consumption === "" ? "Please enter a consumption" : "",
+      consumption:
+        consumption === ""
+          ? "Please enter a consumption"
+          : isNaN(Number(consumption))
+          ? "Please enter a valid number"
+          : "",
       unit: selectedUnit === "" ? "Please select a unit" : "",
       dataSource: dataSource === "" ? "Please enter a data source" : "",
     };
@@ -78,19 +86,18 @@ const FormBody = ({
       newErrors.dataSource === ""
     ) {
       const customData = {
+        scope: selectedScope,
         activity: selectedType,
         emissionSource: selectedName,
         consumption: consumption,
         unit: selectedUnit,
         dataSource: dataSource,
       };
-      setData((prevData) => [...prevData, customData]);
-      console.log("Form data:", customData);
+      setData((prevData) => [customData, ...prevData]);
+      // setConsumption("");
+      // setDataSource("");
+      // clearForm();
     }
-
-    setConsumption("");
-    setDataSource("");
-    clearForm();
   };
 
   return (
@@ -168,7 +175,7 @@ const FormBody = ({
       />
       <AddButton
         onClick={handleSubmit}
-        className="btn  w-1/4 xl:w-8 border-gray-300 btn-square center min-h-8 size-8 btn-outline xl:col-start-6 col-start-1 xl:row-start-2 row-start-11 mt-3 xl:mt-0 mx-auto font-roboto hover:bg-primary"
+        className="btn w-1/2 sm:w-1/4 xl:w-8 border-gray-300 btn-square center min-h-8 size-8 btn-outline xl:col-start-6 col-start-1 xl:row-start-2 row-start-11 mt-3 xl:mt-0 mx-auto font-roboto hover:bg-primary"
       />
     </>
   );

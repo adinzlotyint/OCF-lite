@@ -8,17 +8,18 @@ const ContentContainer = () => {
     const storedData = localStorage.getItem("tableData");
     return storedData ? JSON.parse(storedData) : [];
   });
-  const [fromScratch, setFromScratch] = useState(false); // Assuming data is an array of form submissions
+
+  const fromScratch = false;
 
   const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
 
   const handleRowDelete = (index: number) => {
     setDeletingIndex(index);
     setTimeout(() => {
-      const newData = data.filter((item, i) => i !== index);
+      const newData = data.filter((_, i) => i !== index);
       setData(newData);
       setDeletingIndex(null);
-    }, 500); // Match this duration to your CSS transition
+    }, 500);
   };
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const ContentContainer = () => {
   }, [data]);
 
   return (
-    <div className="grid grid-cols-1 grid-rows-layoutContentPanel p-6 bg-white xl:ml-4 ml-8 mr-8 rounded-2xl shadow-lg hover:shadow-xl transition-all h-full">
+    <div className="flex flex-col h-full p-6 bg-white 2xl:ml-4 ml-0 sm:ml-8 sm:mr-8 mr-0 sm:rounded-2xl rounded-none shadow-lg hover:shadow-xl transition-all">
       <p className="text-lg font-roboto font-bold">
         Data Table
         <span className="block text-xs font-roboto text-gray-500 font-normal">
@@ -49,14 +50,19 @@ const ContentContainer = () => {
       </p>
 
       <InputForm setData={setData} />
-      <DataTable
-        data={data}
-        fromScratch={fromScratch}
-        handleRowDelete={handleRowDelete}
-        deletingIndex={deletingIndex}
-      />
-      <div className="flex justify-center">
-        <button className="btn btn-neutral bg-primary hover:bg-primary shadow-lg rounded-lg w-1/4 min-h-8 h-6 font-roboto font-normal text-white">
+
+      {/* Ensure this container can grow and allow scrolling */}
+      <div className="flex-grow sm:min-h-[100px] max-h-[500px] sm:max-h-[calc(100vh-500px)] overflow-hidden">
+        <DataTable
+          data={data}
+          fromScratch={false}
+          handleRowDelete={handleRowDelete}
+          deletingIndex={deletingIndex}
+        />
+      </div>
+
+      <div className="flex justify-center mt-4">
+        <button className="btn btn-neutral bg-primary hover:bg-primary shadow-lg rounded-lg w-1/2 sm:w-1/4 min-h-8 h-6 font-roboto font-normal text-white">
           Download to file
         </button>
       </div>

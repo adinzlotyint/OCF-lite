@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { customData } from "./FormBody";
 import { FaTrashAlt } from "react-icons/fa";
 import "../../index.css";
@@ -16,32 +16,32 @@ const DataTable: React.FC<DataTableProps> = ({
   deletingIndex,
 }: DataTableProps) => {
   return (
-    <div className="border border-spacing-1 rounded-lg mb-3 overflow-auto">
-      <table className="table table-fixed font-roboto w-full">
+    <div className="h-full max-h-full overflow-x-auto">
+      <table className="table table-pin-rows lg:table-fixed font-roboto w-full">
         <thead>
           <tr>
-            <th className="w-2/12 min-w-6">Activity</th>
-            <th className="w-2/12 min-w-6">Emission Source</th>
-            <th className="w-2/12 min-w-6">Consumption</th>
+            <th className="w-1/12 min-w-6">Scope</th>
+            <th className="w-3/12 min-w-6">Activity</th>
+            <th className="w-3/12 min-w-6">Emission Source</th>
+            <th className="w-1/12 min-w-6">Consumption</th>
             <th className="w-1/12 min-w-6">Unit</th>
-            <th className="w-auto min-w-6">Data Source</th>
+            <th className="w-3/12 min-w-6">Data Source</th>
             <th className="w-[5%] min-w-6 px-2"></th>
           </tr>
         </thead>
-        <tbody className="text-xs">
+        <tbody className="text-xs overflow-y-auto">
           {data.map((item, index) => (
             <tr
               key={index}
               className={deletingIndex === index ? "fade-out" : ""}
             >
+              <td className="break-words min-w-20">{item.scope}</td>
               <td className="break-words">{item.activity}</td>
               <td className="break-words">{item.emissionSource}</td>
               <td className="break-words">{item.consumption}</td>
               <td className="break-words">{item.unit}</td>
-              <td className="break-words whitespace-normal">
-                {item.dataSource}
-              </td>
-              <td className="pr-1 pl-0 align-middle text-center">
+              <td className="break-all min-w-36">{item.dataSource}</td>
+              <td className="p-2 text-center sticky right-0 bg-white shadow-lg">
                 <button onClick={() => handleRowDelete(index)}>
                   <FaTrashAlt className="text-lg" />
                 </button>

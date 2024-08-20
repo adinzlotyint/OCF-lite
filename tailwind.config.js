@@ -14,7 +14,7 @@ module.exports = {
       gridTemplateRows: {
         layout: "125px auto",
         layout2: "65px auto 1fr",
-        layoutContentPanel: "50px auto 1fr auto",
+        layoutContentPanel: "auto auto 1fr auto",
         layoutFormGridlg: "auto",
       },
       gridTemplateColumns: {

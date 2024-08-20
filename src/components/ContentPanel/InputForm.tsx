@@ -108,6 +108,7 @@ const InputForm: React.FC<InputFormProps> = ({ setData }) => {
             selectedType={selectedType}
             selectedName={selectedName}
             selectedUnit={selectedUnit}
+            selectedScope={selectedScope}
             handleTypeChange={handleTypeChange}
             handleNameChange={handleNameChange}
             handleUnitChange={handleUnitChange}

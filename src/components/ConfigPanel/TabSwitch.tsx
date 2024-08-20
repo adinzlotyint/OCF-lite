@@ -8,12 +8,12 @@ const TabSwitch = ({ onSelectTab, uploadTab }: Props) => {
     <>
       <div
         role="tablist"
-        className="relative flex justify-between bg-bgcolor rounded-lg p-1 mt-6 shadow-inner"
+        className="relative flex justify-between bg-bgcolor rounded-lg p-1 mt-4 shadow-inner"
       >
         <button
           onClick={() => onSelectTab("scratch")}
           className={`relative z-20 flex-1 py-1 px-4 rounded-lg transition-colors duration-300 text-xs 2xl:text-sm font-roboto ${
-            uploadTab === "scratch" ? "text-white" : "text-primary"
+            uploadTab === "scratch" ? "text-white font-bold" : "text-primary"
           }`}
         >
           Create From Scratch
@@ -21,7 +21,7 @@ const TabSwitch = ({ onSelectTab, uploadTab }: Props) => {
         <button
           onClick={() => onSelectTab("upload")}
           className={`relative z-20 flex-1 py-1 px-4 rounded-lg transition-colors duration-300 text-xs 2xl:text-sm font-roboto ${
-            uploadTab === "upload" ? "text-white" : "text-primary"
+            uploadTab === "upload" ? "text-white font-bold" : "text-primary"
           }`}
         >
           Upload Existing Data

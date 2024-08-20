@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaReact } from "react-icons/fa";
 import TabSwitch from "./TabSwitch.tsx";
-import RadioButtons from "./RadioButtons";
+import Checkbox from "./CustomListCheckbox.tsx";
 import UploadTemplate from "./UploadTemplate.tsx";
 import { motion } from "framer-motion";
 
@@ -10,7 +10,7 @@ const ConfigPanel = () => {
   const [uploadTemplate, setUploadTemplate] = useState("Default");
 
   return (
-    <div className="flex flex-col bg-white mt-8 xl:mr-4 mr-8 mb-8 ml-8 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+    <div className="flex flex-col bg-white mt-8 2xl:mr-4 sm:mr-[25%] mr-0 mb-8 2xl:ml-8 sm:ml-[25%] min-w-[50%] ml-0 p-6 rounded-none sm:rounded-2xl shadow-lg hover:shadow-xl transition-all">
       {/* Header section */}
       <div className="w-full rounded-2xl bg-primary flex justify-center">
         <div className="p-[2vw]">
@@ -25,7 +25,7 @@ const ConfigPanel = () => {
       </div>
 
       {/* Radio buttons for selecting template for dropdown lists content */}
-      <RadioButtons onChange={(state) => setUploadTemplate(state)} />
+      <Checkbox onChange={(state) => setUploadTemplate(state)} />
 
       {/* Upload template for dropdown lists content */}
       <UploadTemplate isVisible={uploadTemplate} />
