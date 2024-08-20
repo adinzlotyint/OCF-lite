@@ -8,13 +8,16 @@ interface DataTableProps {
   fromScratch: boolean;
   handleRowDelete: (index: number) => void;
   deletingIndex: number | null;
+  filteredData: customData[];
 }
 
 const DataTable: React.FC<DataTableProps> = ({
   data,
   handleRowDelete,
   deletingIndex,
+  filteredData,
 }: DataTableProps) => {
+  const dataToDisplay = filteredData.length > 0 ? filteredData : data;
   return (
     <div className="h-full max-h-full overflow-x-auto">
       <table className="table table-pin-rows lg:table-fixed font-roboto w-full">
@@ -30,7 +33,7 @@ const DataTable: React.FC<DataTableProps> = ({
           </tr>
         </thead>
         <tbody className="text-xs overflow-y-auto">
-          {data.map((item, index) => (
+          {dataToDisplay.map((item, index) => (
             <tr
               key={index}
               className={deletingIndex === index ? "fade-out" : ""}

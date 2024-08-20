@@ -23,6 +23,14 @@
   box-shadow: 0 0 2px rgba(185, 185, 185, 0.5); /* Add a blue shadow */
   outline: none; /* Remove default outline */
 }
+.search-custom {
+  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-full;
+  text-indent: 1em;
+}
+
+.search-custom:focus {
+  outline: none; /* Remove default outline */
+}
 
 .select-custom:focus {
   outline: none; /* Remove the focus outline */
