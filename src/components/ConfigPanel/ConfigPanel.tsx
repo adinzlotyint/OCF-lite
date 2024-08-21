@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { FaReact } from "react-icons/fa";
-import TabSwitch from "./TabSwitch.tsx";
 import Checkbox from "./CustomListCheckbox.tsx";
 import UploadTemplate from "./UploadTemplate.tsx";
 import { motion } from "framer-motion";
+import UploadExistingDataCheckbox from "./UploadExistingDataCheckbox.tsx";
+import UploadData from "./UploadData.tsx";
+import OptionalDataCheckbox from "./OptionalDataCheckbox.tsx";
+import OptionalDataSection from "./OptionalDataSection.tsx";
 
 const ConfigPanel = () => {
-  const [uploadTab, setUploadTab] = useState("upload");
-  const [uploadTemplate, setUploadTemplate] = useState("Default");
+  const [uploadTemplate, setUploadTemplate] = useState(false);
+  const [uploadData, setUploadData] = useState(false);
+  const [optionalData, setOptionalData] = useState(false);
 
   return (
     <div className="flex flex-col bg-white mt-8 2xl:mr-4 sm:mr-[25%] mr-0 mb-8 2xl:ml-8 sm:ml-[25%] min-w-[50%] ml-0 p-6 rounded-none sm:rounded-2xl shadow-lg hover:shadow-xl transition-all">
@@ -25,16 +29,20 @@ const ConfigPanel = () => {
       </div>
 
       {/* Radio buttons for selecting template for dropdown lists content */}
-      <Checkbox onChange={(state) => setUploadTemplate(state)} />
+      <Checkbox onChange={() => setUploadTemplate(!uploadTemplate)} />
 
       {/* Upload template for dropdown lists content */}
       <UploadTemplate isVisible={uploadTemplate} />
+      <UploadExistingDataCheckbox onChange={() => setUploadData(!uploadData)} />
+      <UploadData isVisible={uploadData} />
+      <OptionalDataCheckbox onChange={() => setOptionalData(!optionalData)} />
+      <OptionalDataSection isVisible={optionalData} />
 
       {/* Switch to change form for entering new data or edit existing one accordingly */}
-      <TabSwitch
+      {/* <TabSwitch
         uploadTab={uploadTab}
         onSelectTab={(TabName) => setUploadTab(TabName)}
-      />
+      /> */}
     </div>
   );
 };

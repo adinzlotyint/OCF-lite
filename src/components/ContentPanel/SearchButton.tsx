@@ -67,7 +67,7 @@ const SearchButton: React.FC<Props> = ({ className, onInputChange }) => {
       {showButton && (
         <button
           className={`btn border-gray-300 btn-square min-h-8 size-8 btn-outline font-roboto hover:bg-primary transition-all duration-300 ease-in-out ${
-            isInputVisible ? "opacity-0" : "opacity-100"
+            isInputVisible ? "opacity-0 w-0" : "opacity-100"
           }`}
           onClick={handleClick}
         >

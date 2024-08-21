@@ -29,7 +29,7 @@ const templateSchema: JSONSchemaType<Template[]> = {
 
 const validateTemplate = ajv.compile(templateSchema);
 
-const UploadTemplate = ({ isVisible }: Props) => {
+const UploadData = ({ isVisible }: Props) => {
   const [selectedFile, setSelectedFile] = useState<Template[]>([]);
 
   // Function to store the uploaded file in the state and update the dropdown lists accordingly
@@ -80,4 +80,4 @@ const UploadTemplate = ({ isVisible }: Props) => {
   );
 };
 
-export default UploadTemplate;
+export default UploadData;

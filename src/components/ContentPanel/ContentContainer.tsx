@@ -122,10 +122,17 @@ const ContentContainer = () => {
             onInputChange={(value) => setSearchText(value)}
             className="row-start-2 md:row-start-1 col-start-1 col-span-3 md:col-span-1 w-full md:w-[90%] mt-2 md:mt-0 mr-4"
           />
-          <button className="row-start-1 md:col-span-1 col-span-2 md:mb-0 btn btn-neutral bg-primary hover:bg-primary shadow-lg rounded-lg w-full  min-h-8 h-8 font-roboto font-bold text-white place-self-center">
+          <button
+            className={`row-start-1 md:col-span-1 col-span-2 md:mb-0 btn btn-neutral ${
+              data.length === 0
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-primary hover:bg-primary"
+            } shadow-lg rounded-lg w-full min-h-8 h-8 font-roboto font-bold text-white place-self-center`}
+            disabled={data.length === 0}
+          >
             Download to file
           </button>
-          <div className="flex justify-end row-start-1 md:row-start-1">
+          <div className="flex justify-end row-start-1 md:row-start-1 ml-3 md:ml-0">
             <RemoveAllButton className="" onClick={handleRemoveAll} />
           </div>
         </div>

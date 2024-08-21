@@ -32,7 +32,7 @@ const DataTable: React.FC<DataTableProps> = ({
             <th className="w-1/12 min-w-6">Consumption</th>
             <th className="w-1/12 min-w-6">Unit</th>
             <th className="w-3/12 min-w-6">Data Source</th>
-            <th className="w-[5%] min-w-6 px-2">
+            <th className="w-[5%] min-w-6 px-2 sticky right-0 bg-white">
               <RestoreLastChange
                 onClick={handleRestore}
                 visible={!!lastDeleted}
@@ -41,24 +41,32 @@ const DataTable: React.FC<DataTableProps> = ({
           </tr>
         </thead>
         <tbody className="text-xs overflow-y-auto">
-          {filteredData.map((item, index) => (
-            <tr
-              key={index}
-              className={deletingIndex === index ? "fade-out" : ""}
-            >
-              <td className="break-words min-w-20">{item.scope}</td>
-              <td className="break-words">{item.activity}</td>
-              <td className="break-words">{item.emissionSource}</td>
-              <td className="break-words">{item.consumption}</td>
-              <td className="break-words">{item.unit}</td>
-              <td className="break-all min-w-36">{item.dataSource}</td>
-              <td className="p-2 text-center sticky right-0 bg-white shadow-lg">
-                <button onClick={() => handleRowDelete(index)}>
-                  <FaTrashAlt className="text-lg" />
-                </button>
+          {filteredData.length > 0 ? (
+            filteredData.map((item, index) => (
+              <tr
+                key={index}
+                className={deletingIndex === index ? "fade-out" : ""}
+              >
+                <td className="break-words min-w-20">{item.scope}</td>
+                <td className="break-words">{item.activity}</td>
+                <td className="break-words">{item.emissionSource}</td>
+                <td className="break-words">{item.consumption}</td>
+                <td className="break-words">{item.unit}</td>
+                <td className="break-all min-w-36">{item.dataSource}</td>
+                <td className="p-2 text-center sticky right-0 bg-white shadow-lg">
+                  <button onClick={() => handleRowDelete(index)}>
+                    <FaTrashAlt className="text-lg" />
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr className="border border-none">
+              <td colSpan={7} className="text-center  text-gray-300 text-2xl">
+                No data available. Add some entries to populate the table.
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
