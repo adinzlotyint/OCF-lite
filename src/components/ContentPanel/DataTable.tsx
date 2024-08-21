@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { customData } from "./FormBody";
 import { FaTrashAlt } from "react-icons/fa";
 import "../../index.css";
@@ -17,7 +17,6 @@ const DataTable: React.FC<DataTableProps> = ({
   deletingIndex,
   filteredData,
 }: DataTableProps) => {
-  const dataToDisplay = filteredData.length > 0 ? filteredData : data;
   return (
     <div className="h-full max-h-full overflow-x-auto">
       <table className="table table-pin-rows lg:table-fixed font-roboto w-full">
@@ -33,7 +32,7 @@ const DataTable: React.FC<DataTableProps> = ({
           </tr>
         </thead>
         <tbody className="text-xs overflow-y-auto">
-          {dataToDisplay.map((item, index) => (
+          {filteredData.map((item, index) => (
             <tr
               key={index}
               className={deletingIndex === index ? "fade-out" : ""}

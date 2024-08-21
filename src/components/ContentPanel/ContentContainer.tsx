@@ -4,6 +4,7 @@ import InputForm from "./InputForm";
 import { customData } from "./FormBody";
 import SearchButton from "./SearchButton";
 import RemoveAllButton from "./RemoveAllButton";
+import RestoreLastChange from "./RestoreLastChange";
 
 const ContentContainer = () => {
   const [data, setData] = useState<customData[]>(() => {
@@ -12,16 +13,15 @@ const ContentContainer = () => {
   });
   const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
   const [filteredData, setFilteredData] = useState<customData[]>([]);
-
-  // const [searchBtn, setSearchBtn] = useState(false);
-  // const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   // const fromScratch = false;
 
   const handleRowDelete = (index: number) => {
+    const itemToDelete = filteredData[index];
     setDeletingIndex(index);
     setTimeout(() => {
-      const newData = data.filter((_, i) => i !== index);
+      const newData = data.filter((item) => item !== itemToDelete);
       setData(newData);
       setDeletingIndex(null);
     }, 500);
@@ -43,14 +43,15 @@ const ContentContainer = () => {
   useEffect(() => {
     console.log("Data updated:", data);
     localStorage.setItem("tableData", JSON.stringify(data));
+    updateFilteredData();
   }, [data]);
 
   const handleRemoveAll = () => {
     setData([]);
   };
 
-  const handleInputChange = (value: string) => {
-    const lowerValue = value.toLowerCase();
+  const updateFilteredData = () => {
+    const lowerValue = searchText.toLowerCase();
     const searchedData = data.filter((item) => {
       return (
         item.scope.toLowerCase().includes(lowerValue) ||
@@ -61,9 +62,12 @@ const ContentContainer = () => {
         item.dataSource.toLowerCase().includes(lowerValue)
       );
     });
-
     setFilteredData(searchedData);
   };
+
+  useEffect(() => {
+    updateFilteredData();
+  }, [searchText]);
 
   return (
     <div className="flex flex-col h-full p-6 bg-white 2xl:ml-4 ml-0 sm:ml-8 sm:mr-8 mr-0 sm:rounded-2xl rounded-none shadow-lg hover:shadow-xl transition-all">
@@ -88,14 +92,14 @@ const ContentContainer = () => {
       </div>
 
       <div className="grid grid-cols-3 mt-4 justify-center items-center">
-        <SearchButton onInputChange={handleInputChange} />
+        <SearchButton onInputChange={(value) => setSearchText(value)} />
         <button className="btn btn-neutral bg-primary hover:bg-primary shadow-lg rounded-lg w-full sm:w-3/4 min-h-8 h-8 font-roboto font-bold text-white place-self-center">
           Download to file
         </button>
-        <RemoveAllButton
-          className="justify-self-end"
-          onClick={handleRemoveAll}
-        />
+        <div className="flex justify-end">
+          <RestoreLastChange className="mr-2" />
+          <RemoveAllButton className="" onClick={handleRemoveAll} />
+        </div>
       </div>
     </div>
   );
