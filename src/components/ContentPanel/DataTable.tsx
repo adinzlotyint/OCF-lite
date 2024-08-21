@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { customData } from "./FormBody";
 import { FaTrashAlt } from "react-icons/fa";
 import "../../index.css";
+import RestoreLastChange from "./RestoreLastChange";
 
 interface DataTableProps {
   data: customData[];
@@ -9,26 +10,34 @@ interface DataTableProps {
   handleRowDelete: (index: number) => void;
   deletingIndex: number | null;
   filteredData: customData[];
+  handleRestore: () => void;
+  lastDeleted: customData | customData[] | null;
 }
 
 const DataTable: React.FC<DataTableProps> = ({
-  data,
   handleRowDelete,
   deletingIndex,
   filteredData,
+  handleRestore,
+  lastDeleted,
 }: DataTableProps) => {
   return (
     <div className="h-full max-h-full overflow-x-auto">
       <table className="table table-pin-rows lg:table-fixed font-roboto w-full">
         <thead>
-          <tr>
+          <tr className="h-14">
             <th className="w-1/12 min-w-6">Scope</th>
             <th className="w-3/12 min-w-6">Activity</th>
             <th className="w-3/12 min-w-6">Emission Source</th>
             <th className="w-1/12 min-w-6">Consumption</th>
             <th className="w-1/12 min-w-6">Unit</th>
             <th className="w-3/12 min-w-6">Data Source</th>
-            <th className="w-[5%] min-w-6 px-2"></th>
+            <th className="w-[5%] min-w-6 px-2">
+              <RestoreLastChange
+                onClick={handleRestore}
+                visible={!!lastDeleted}
+              />
+            </th>
           </tr>
         </thead>
         <tbody className="text-xs overflow-y-auto">

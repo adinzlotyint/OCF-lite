@@ -21,6 +21,7 @@ interface Props {
   }) => void;
   setData: React.Dispatch<React.SetStateAction<customData[]>>;
   clearForm: () => void;
+  setLastDeleted: () => void;
 }
 
 export interface customData {
@@ -45,7 +46,7 @@ const FormBody = ({
   handleUnitChange,
   changeError,
   setData,
-  clearForm,
+  setLastDeleted,
 }: Props) => {
   const [dataSource, setDataSource] = useState<string>("");
   const [consumption, setConsumption] = useState<string>("");
@@ -94,9 +95,7 @@ const FormBody = ({
         dataSource: dataSource,
       };
       setData((prevData) => [customData, ...prevData]);
-      // setConsumption("");
-      // setDataSource("");
-      // clearForm();
+      setLastDeleted();
     }
   };
 
@@ -110,6 +109,7 @@ const FormBody = ({
         onChange={handleTypeChange}
         className="input-custom xl:col-start-1 xl:row-start-2 row-start-2 col-start-1"
         value={selectedType}
+        disabled={typeList.length === 0}
       >
         <option value="" disabled hidden>
           Select activity
@@ -127,6 +127,7 @@ const FormBody = ({
         onChange={handleNameChange}
         className="input-custom xl:col-start-2 xl:row-start-2 row-start-4"
         value={selectedName}
+        disabled={nameList.length === 0}
       >
         <option value="" disabled hidden>
           Select source
@@ -153,6 +154,7 @@ const FormBody = ({
         onChange={handleUnitChange}
         className="input-custom xl:col-start-4 xl:row-start-2 row-start-8"
         value={selectedUnit}
+        disabled={unitList.length === 0}
       >
         <option value="" disabled hidden>
           Select unit
@@ -175,7 +177,7 @@ const FormBody = ({
       />
       <AddButton
         onClick={handleSubmit}
-        className="btn w-1/2 sm:w-1/4 xl:w-8 border-gray-300 btn-square center min-h-8 size-8 btn-outline xl:col-start-6 col-start-1 xl:row-start-2 row-start-11 mt-3 xl:mt-0 mx-auto font-roboto hover:bg-primary"
+        className="btn w-1/2 sm:w-1/4 xl:w-8 border-gray-300 btn-square center min-h-8 size-8 btn-outline xl:col-start-6 col-start-1 xl:row-start-2 row-start-11 mt-3 xl:mt-0 mx-auto font-roboto hover:bg-primary transition-all duration-300 ease-in-out"
       />
     </>
   );

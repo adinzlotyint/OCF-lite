@@ -12,6 +12,10 @@
 .input-custom {
   @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto mr-2 xl:mt-0 mt-1;
   text-indent: 1em;
+  width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .input-headers {
@@ -23,6 +27,13 @@
   box-shadow: 0 0 2px rgba(185, 185, 185, 0.5); /* Add a blue shadow */
   outline: none; /* Remove default outline */
 }
+
+@media (max-width: 1279px) {
+  .input-custom {
+    width: 100%;
+  }
+}
+
 .search-custom {
   @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-full;
   text-indent: 1em;
@@ -40,3 +51,4 @@
   opacity: 0;
   transition: opacity 0.5s ease-out;
 }
+

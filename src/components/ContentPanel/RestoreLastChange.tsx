@@ -1,38 +1,21 @@
-import { useState } from "react";
-import { FaTrashRestoreAlt } from "react-icons/fa";
+import { FaUndo } from "react-icons/fa";
 
 interface Props {
   className?: string;
+  onClick: () => void; // Add onClick prop
+  visible: boolean; // Control visibility based on whether there's a last deleted item
 }
 
-const RestoreLastChange = ({ className }: Props) => {
-  const [hovered, setHovered] = useState(false);
+const RestoreLastChange = ({ onClick, visible }: Props) => {
+  if (!visible) return null; // Hide the button if there’s nothing to restore
 
   return (
-    <div
-      className={`relative inline-block overflow-hidden ${className}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <div className="flex justify-center">
       <button
-        className={`btn border-gray-300 btn-square min-h-8 h-8 btn-outline font-roboto transition-all duration-300 ease-in-out flex items-center justify-center ${
-          hovered ? "w-40" : "w-8 "
-        }`}
-        style={{
-          transformOrigin: "right center",
-          backgroundColor: hovered ? "#212121" : "transparent",
-        }}
+        className="btn min-h-8 h-8 w-8 border-gray-300 btn-square btn-outline font-roboto transition-all duration-300 ease-in-out flex items-center justify-center"
+        onClick={onClick} // Handle click event
       >
-        <div className="flex items-center justify-center w-8 h-full">
-          <FaTrashRestoreAlt className="h-full w-6/12" />
-        </div>
-        <div
-          className={`overflow-hidden transition-all duration-500 ease-in-out flex items-center ${
-            hovered ? "w-28" : "w-0"
-          }`}
-        >
-          <span className="whitespace-nowrap text-white">Undo changes</span>
-        </div>
+        <FaUndo className="h-6" />
       </button>
     </div>
   );

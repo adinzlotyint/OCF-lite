@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 interface Props {
   className: string;
   onClick: () => void;

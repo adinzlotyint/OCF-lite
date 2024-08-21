@@ -15,9 +15,10 @@ export interface Data {
 
 interface InputFormProps {
   setData: React.Dispatch<React.SetStateAction<customData[]>>;
+  setLastDeleted: () => void;
 }
 
-const InputForm: React.FC<InputFormProps> = ({ setData }) => {
+const InputForm: React.FC<InputFormProps> = ({ setData, setLastDeleted }) => {
   const [selectedScope, setSelectedScope] = useState<string>("Scope 1");
   const [selectedType, setSelectedType] = useState<string>("");
   const [selectedName, setSelectedName] = useState<string>("");
@@ -117,6 +118,7 @@ const InputForm: React.FC<InputFormProps> = ({ setData }) => {
               setErrors(newErrors);
             }}
             clearForm={clearForm}
+            setLastDeleted={setLastDeleted}
           />
         </form>
         {hasErrors() !== "" && (
