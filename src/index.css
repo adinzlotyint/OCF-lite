@@ -10,9 +10,9 @@
   }
 
 .input-custom {
-  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto mr-2 xl:mt-0 mt-1;
+  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto xl:mt-0 mt-1;
   text-indent: 1em;
-  width: 95%;
+  width: calc(100% - 1em);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
