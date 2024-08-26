@@ -1,11 +1,6 @@
 import { useState } from "react";
 import UploadFrame from "./BeforeTemplateUploadFrame";
-import { motion } from "framer-motion";
 import Ajv, { JSONSchemaType } from "ajv";
-
-interface Props {
-  isVisible: boolean;
-}
 
 interface Template {
   id: string;
@@ -29,7 +24,7 @@ const templateSchema: JSONSchemaType<Template[]> = {
 
 const validateTemplate = ajv.compile(templateSchema);
 
-const UploadData = ({ isVisible }: Props) => {
+const UploadData = () => {
   const [selectedFile, setSelectedFile] = useState<Template[]>([]);
 
   // Function to store the uploaded file in the state and update the dropdown lists accordingly
@@ -62,20 +57,12 @@ const UploadData = ({ isVisible }: Props) => {
 
   return (
     <>
-      <motion.div
-        animate={
-          isVisible
-            ? { opacity: 1, display: "block" }
-            : { opacity: 0, transitionEnd: { display: "none" } }
-        }
-        transition={{ duration: 0.2 }}
-        className="mt-4"
-      >
+      <div className="mt-4">
         {selectedFile.length === 0 && (
           <UploadFrame onUpload={handleTemplateUpload} />
         )}
         {/* {selectedFile.length !== 0 && <FileFrame fileName={fileName} />} */}
-      </motion.div>
+      </div>
     </>
   );
 };

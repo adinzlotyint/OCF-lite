@@ -4,8 +4,10 @@ import InputForm from "./InputForm";
 import { customData } from "./FormBody";
 import SearchButton from "./SearchButton";
 import RemoveAllButton from "./RemoveAllButton";
+import { useCreateJSON } from "../../hooks/CreateJSON";
 
 const ContentContainer = () => {
+  const createCSV = useCreateJSON();
   const [data, setData] = useState<customData[]>(() => {
     const storedData = localStorage.getItem("tableData");
     return storedData ? JSON.parse(storedData) : [];
@@ -104,8 +106,7 @@ const ContentContainer = () => {
           setLastDeleted={() => setLastDeleted({ item: null, index: null })}
         />
 
-        {/* Ensure this container can grow and allow scrolling */}
-        <div className="flex-grow sm:min-h-[100px] max-h-[500px] sm:max-h-[calc(100vh-500px)] overflow-hidden">
+        <div className="flex-grow 2xl:min-h-[285px] sm:min-h-[100px] max-h-[500px] sm:max-h-[calc(100vh-500px)] overflow-hidden">
           <DataTable
             data={data}
             filteredData={filteredData}
@@ -113,7 +114,7 @@ const ContentContainer = () => {
             handleRowDelete={handleRowDelete}
             deletingIndex={deletingIndex}
             handleRestore={handleRestore}
-            lastDeleted={lastDeleted.item} // Pass the last deleted item to the DataTable component
+            lastDeleted={lastDeleted.item} // Pass the last deleted item for RestoreLastChange component
           />
         </div>
 
@@ -129,6 +130,7 @@ const ContentContainer = () => {
                 : "bg-primary hover:bg-primary"
             } shadow-lg rounded-lg w-full min-h-8 h-8 font-roboto font-bold text-white place-self-center`}
             disabled={data.length === 0}
+            onClick={() => createCSV(data)}
           >
             Download to file
           </button>

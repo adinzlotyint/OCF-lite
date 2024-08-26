@@ -13,7 +13,10 @@ const FormHeader = ({
 }: Props) => {
   return (
     <>
-      <select onChange={handleScopeChange} className="select-custom font-bold">
+      <select
+        onChange={handleScopeChange}
+        className="select-custom font-medium"
+      >
         {scopesArray.map((scope) => (
           <option key={scope} value={scope} className="bg-primary text-white">
             {scope}

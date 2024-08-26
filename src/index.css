@@ -10,7 +10,7 @@
   }
 
 .input-custom {
-  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto xl:mt-0 mt-1;
+  @apply border border-spacing-1 rounded-md text-xs font-roboto h-8 w-auto xl:mt-0;
   text-indent: 1em;
   width: calc(100% - 1em);
   overflow: hidden;
@@ -19,7 +19,7 @@
 }
 
 .input-headers {
-  @apply text-xs font-bold font-roboto ml-1 mt-1 xl:mt-0;
+  @apply text-xs font-medium font-roboto ml-1 mt-1 xl:mt-0;
 }
 
 .input-custom:focus {
@@ -50,5 +50,9 @@
 .fade-out {
   opacity: 0;
   transition: opacity 0.5s ease-out;
+}
+
+.custom-accordion {
+  @apply bg-white border border-spacing-1 my-2;
 }
 

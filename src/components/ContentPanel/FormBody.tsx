@@ -107,7 +107,7 @@ const FormBody = ({
       </p>
       <select
         onChange={handleTypeChange}
-        className="input-custom xl:col-start-1 xl:row-start-2 row-start-2 col-start-1"
+        className="input-custom mt-1 xl:col-start-1 xl:row-start-2 row-start-2 col-start-1"
         value={selectedType}
         disabled={typeList.length === 0}
       >
@@ -125,7 +125,7 @@ const FormBody = ({
       </p>
       <select
         onChange={handleNameChange}
-        className="input-custom xl:col-start-2 xl:row-start-2 row-start-4"
+        className="input-custom mt-1 xl:col-start-2 xl:row-start-2 row-start-4"
         value={selectedName}
         disabled={nameList.length === 0}
       >
@@ -143,7 +143,7 @@ const FormBody = ({
       </p>
       <input
         type="text"
-        className="input-custom xl:col-start-3 xl:row-start-2 row-start-6 pl-1"
+        className="input-custom mt-1 xl:col-start-3 xl:row-start-2 row-start-6 pl-1"
         value={consumption}
         onChange={handleConsumptionChange}
       />
@@ -152,7 +152,7 @@ const FormBody = ({
       </p>
       <select
         onChange={handleUnitChange}
-        className="input-custom xl:col-start-4 xl:row-start-2 row-start-8"
+        className="input-custom mt-1 xl:col-start-4 xl:row-start-2 row-start-8"
         value={selectedUnit}
         disabled={unitList.length === 0}
       >
@@ -171,7 +171,7 @@ const FormBody = ({
       <input
         id="dataSource"
         type="text"
-        className="input-custom xl:col-start-5 xl:row-start-2 row-start-10 pl-1"
+        className="input-custom mt-1 xl:col-start-5 xl:row-start-2 row-start-10 pl-1"
         value={dataSource}
         onChange={handleDataSourceChange}
       />
