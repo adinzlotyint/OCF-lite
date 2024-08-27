@@ -6,9 +6,12 @@ import NavBar from "./components/NavBar/NavBar";
 import {
   OptionalDataContext,
   TableDataContext,
+  SelectsTemplateContext,
   OptionalData,
   TableData,
+  SelectsTemplate,
 } from "./hooks/Contexts";
+import DefaultTemplate from "./configs/DefaultTemplate.json";
 
 function App() {
   const [optionalData, setOptionalData] = useState<OptionalData>(() => {
@@ -21,6 +24,9 @@ function App() {
     return storedData ? JSON.parse(storedData) : [];
   });
 
+  const [selectsTemplate, setSelectsTemplate] =
+    useState<SelectsTemplate>(DefaultTemplate);
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="grid 2xl:grid-rows-layout 2xl:grid-cols-[1fr_2fr] grid-rows-layout2 grid-cols-1 flex-grow">
@@ -29,12 +35,16 @@ function App() {
         </div>
         <OptionalDataContext.Provider value={{ optionalData, setOptionalData }}>
           <TableDataContext.Provider value={{ tableData, setTableData }}>
-            <div className="w-full 2xl:col-start-1 2xl:col-end-2 2xl:row-start-1 2xl:row-end-4 col-start-1 row-start-2">
-              <ConfigPanel />
-            </div>
-            <div className="w-full 2xl:col-start-2 2xl:row-start-2 2xl:row-end-4 col-start-1 row-start-3 flex flex-col h-full">
-              <ContentContainer />
-            </div>
+            <SelectsTemplateContext.Provider
+              value={{ selectsTemplate, setSelectsTemplate }}
+            >
+              <div className="w-full 2xl:col-start-1 2xl:col-end-2 2xl:row-start-1 2xl:row-end-4 col-start-1 row-start-2">
+                <ConfigPanel />
+              </div>
+              <div className="w-full 2xl:col-start-2 2xl:row-start-2 2xl:row-end-4 col-start-1 row-start-3 flex flex-col h-full">
+                <ContentContainer />
+              </div>
+            </SelectsTemplateContext.Provider>
           </TableDataContext.Provider>
         </OptionalDataContext.Provider>
       </div>

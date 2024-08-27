@@ -1,36 +1,35 @@
-import { useState } from "react";
-import UploadFrame from "./BeforeUploadFrame";
-import Ajv, { JSONSchemaType } from "ajv";
-
-interface Template {
-  id: string;
-  name: string;
-}
+import { useContext, useState } from "react";
+import UploadFrame from "./UploadFrame";
+import Ajv from "ajv";
+import schema from "../../interfaces/ListsTemplateJSON";
+import { SelectsTemplateContext } from "../../hooks/Contexts";
 
 const ajv = new Ajv();
-
-const templateSchema: JSONSchemaType<Template[]> = {
-  type: "array",
-  items: {
-    type: "object",
-    properties: {
-      id: { type: "string" },
-      name: { type: "string" },
-    },
-    required: ["id", "name"],
-    additionalProperties: true,
-  },
-};
-
-const validateTemplate = ajv.compile(templateSchema);
+const validate = ajv.compile(schema);
 
 const UploadTemplate = () => {
-  const [selectedFile, setSelectedFile] = useState<Template[]>([]);
+  const { setSelectsTemplate } = useContext(SelectsTemplateContext);
+  const [uploadStatus, setUploadStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Function to store the uploaded file in the state and update the dropdown lists accordingly
-  const handleTemplateUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length === 1) {
-      const file = event.target.files[0];
+  const handleTemplateUpload = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.DragEvent<HTMLLabelElement>
+  ) => {
+    let files: FileList | null = null;
+
+    if ("files" in event.target) {
+      files = event.target.files;
+    }
+    if ("dataTransfer" in event) {
+      files = event.dataTransfer.files;
+    }
+
+    if (files && files.length === 1) {
+      const file = files[0];
       const reader = new FileReader();
 
       reader.onload = (e) => {
@@ -38,16 +37,15 @@ const UploadTemplate = () => {
           try {
             const jsonData = JSON.parse(e.target.result);
 
-            if (validateTemplate(jsonData)) {
-              setSelectedFile(jsonData);
-              console.log(jsonData);
+            if (validate(jsonData)) {
+              setSelectsTemplate(jsonData);
+              setMessage("", "success");
             } else {
-              console.error("Invalid JSON structure", validateTemplate.errors);
-              // Handle invalid JSON structure (e.g., show an error message to the user)
+              setMessage("Invalid JSON structure", "error");
             }
           } catch (error) {
             console.error("Error parsing JSON", error);
-            // Handle JSON parse error (e.g., show an error message to the user)
+            setMessage("Invalid JSON structure", "error");
           }
         }
       };
@@ -55,13 +53,20 @@ const UploadTemplate = () => {
     }
   };
 
+  function setMessage(errMsg: string, uploadStatus: "success" | "error") {
+    setErrorMessage(errMsg);
+    setUploadStatus(uploadStatus);
+    setTimeout(() => setUploadStatus("idle"), 3000); // Reset after 3 seconds
+  }
+
   return (
     <>
       <div className="mt-4">
-        {selectedFile.length === 0 && (
-          <UploadFrame onUpload={handleTemplateUpload} />
-        )}
-        {/* {selectedFile.length !== 0 && <FileFrame fileName={fileName} />} */}
+        <UploadFrame
+          onUpload={handleTemplateUpload}
+          uploadStatus={uploadStatus}
+          errorMessage={errorMessage}
+        />
       </div>
     </>
   );

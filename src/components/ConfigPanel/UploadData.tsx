@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import UploadFrame from "./BeforeUploadFrame";
+import UploadFrame from "./UploadFrame";
 import Ajv from "ajv";
-import schema from "../../interfaces/json";
+import schema from "../../interfaces/TableDataJSON";
 import { TableDataContext, OptionalDataContext } from "../../hooks/Contexts";
 
 const ajv = new Ajv();

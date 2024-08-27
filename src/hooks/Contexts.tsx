@@ -49,3 +49,23 @@ export const TableDataContext = createContext<TableDataContextType>({
   ],
   setTableData: () => {},
 });
+
+export type SelectsTemplate = {
+  [scope: string]: {
+    [type: string]: {
+      [name: string]: string[];
+    };
+  };
+};
+
+type SelectsTemplateContextType = {
+  selectsTemplate: SelectsTemplate;
+  setSelectsTemplate: React.Dispatch<React.SetStateAction<SelectsTemplate>>;
+};
+
+export const SelectsTemplateContext = createContext<SelectsTemplateContextType>(
+  {
+    selectsTemplate: {},
+    setSelectsTemplate: () => {},
+  }
+);

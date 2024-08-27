@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react";
-import DefaultTemplate from "../../configs/DefaultTemplate.json";
+import { useContext, useEffect, useState } from "react";
+
 import FormBody from "./FormBody";
 import FormHeader from "./FormHeader";
-
-export interface Data {
-  [scope: string]: {
-    [type: string]: {
-      [name: string]: {
-        units: string[];
-      };
-    };
-  };
-}
+import { SelectsTemplate, SelectsTemplateContext } from "../../hooks/Contexts";
 
 interface InputFormProps {
   setLastDeleted: () => void;
 }
 
 const InputForm: React.FC<InputFormProps> = ({ setLastDeleted }) => {
+  const { selectsTemplate } = useContext(SelectsTemplateContext);
   const [selectedScope, setSelectedScope] = useState<string>("Scope 1");
   const [selectedType, setSelectedType] = useState<string>("");
   const [selectedName, setSelectedName] = useState<string>("");
@@ -25,7 +17,6 @@ const InputForm: React.FC<InputFormProps> = ({ setLastDeleted }) => {
   const [typeList, setTypeList] = useState<string[]>([]);
   const [nameList, setNameList] = useState<string[]>([]);
   const [unitList, setUnitList] = useState<string[]>([]);
-
   const [errors, setErrors] = useState({
     activity: "",
     emissionSource: "",
@@ -34,9 +25,8 @@ const InputForm: React.FC<InputFormProps> = ({ setLastDeleted }) => {
     dataSource: "",
   });
 
-  const scopesArray = Object.keys(DefaultTemplate);
-
-  const someObj: Data = DefaultTemplate;
+  const scopesArray = Object.keys(selectsTemplate);
+  const someObj: SelectsTemplate = selectsTemplate;
 
   const handleScopeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const scope = event.target.value;
@@ -67,7 +57,7 @@ const InputForm: React.FC<InputFormProps> = ({ setLastDeleted }) => {
 
   const handleNameChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const name = event.target.value;
-    const emissionSources = someObj[selectedScope][selectedType][name].units;
+    const emissionSources = someObj[selectedScope][selectedType][name];
     setUnitList(emissionSources);
     setSelectedName(name);
     setSelectedUnit("");
