@@ -11,11 +11,9 @@ import {
 } from "./hooks/Contexts";
 
 function App() {
-  const [optionalData, setOptionalData] = useState<OptionalData>({
-    country: "",
-    company: "",
-    fullName: "",
-    email: "",
+  const [optionalData, setOptionalData] = useState<OptionalData>(() => {
+    const storedOptionalData = localStorage.getItem("optionalData");
+    return storedOptionalData ? JSON.parse(storedOptionalData) : [];
   });
 
   const [tableData, setTableData] = useState<TableData[]>(() => {

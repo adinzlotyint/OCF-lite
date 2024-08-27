@@ -43,7 +43,6 @@ const ContentContainer = () => {
 
   // Save data to Local Storage whenever it changes
   useEffect(() => {
-    console.log("Data updated:", tableData);
     localStorage.setItem("tableData", JSON.stringify(tableData));
     updateFilteredData();
   }, [tableData]);

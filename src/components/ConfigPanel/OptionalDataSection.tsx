@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { countries } from "../../configs/CountriesList";
 import { OptionalDataContext } from "../../hooks/Contexts";
 
@@ -12,6 +12,22 @@ const OptionalDataSection = () => {
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    const storedOptionalData = localStorage.getItem("optionalData");
+    if (storedOptionalData) {
+      try {
+        const parsedOptionalData = JSON.parse(storedOptionalData);
+        setOptionalData(parsedOptionalData);
+      } catch (error) {
+        console.error("Failed to parse data:", error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("optionalData", JSON.stringify(optionalData));
+  }, [optionalData]);
 
   return (
     <div>

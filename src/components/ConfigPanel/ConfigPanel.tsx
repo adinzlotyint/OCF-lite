@@ -1,10 +1,7 @@
 import { FaReact } from "react-icons/fa";
-
-import UploadTemplate from "./UploadTemplate.tsx";
 import { motion } from "framer-motion";
-
+import UploadTemplate from "./UploadTemplate.tsx";
 import UploadData from "./UploadData.tsx";
-
 import OptionalDataSection from "./OptionalDataSection.tsx";
 
 const ConfigPanel = () => {

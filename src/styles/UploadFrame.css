@@ -5,3 +5,19 @@
 .upload-frame:hover .upload-frame-svg {
   transform: rotate(20deg);
 }
+
+.upload-frame.bg-bgcolor {
+  background-color: #f9f9f9; /* Default background */
+}
+
+.upload-frame.bg-green-500 {
+  background-color: #48bb78; /* Green background for success */
+}
+
+.upload-frame.bg-red-500 {
+  background-color: #f56565; /* Red background for error */
+}
+
+.no-pointer-events * {
+  pointer-events: none;
+}

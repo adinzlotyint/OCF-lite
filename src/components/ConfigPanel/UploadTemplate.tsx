@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UploadFrame from "./BeforeTemplateUploadFrame";
+import UploadFrame from "./BeforeUploadFrame";
 import Ajv, { JSONSchemaType } from "ajv";
 
 interface Template {
