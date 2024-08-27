@@ -22,6 +22,7 @@ interface Props {
   setData: React.Dispatch<React.SetStateAction<customData[]>>;
   clearForm: () => void;
   setLastDeleted: () => void;
+  data: customData[];
 }
 
 export interface customData {
@@ -47,6 +48,8 @@ const FormBody = ({
   changeError,
   setData,
   setLastDeleted,
+  clearForm,
+  data,
 }: Props) => {
   const [dataSource, setDataSource] = useState<string>("");
   const [consumption, setConsumption] = useState<string>("");
@@ -67,7 +70,12 @@ const FormBody = ({
     const newErrors = {
       activity: selectedType === "" ? "Please select an activity" : "",
       emissionSource:
-        selectedName === "" ? "Please select an emission source" : "",
+        selectedName === ""
+          ? "Please select an emission source"
+          : data.filter((item) => item.emissionSource === selectedName).length >
+            0
+          ? "Emission source already exists"
+          : "",
       consumption:
         consumption === ""
           ? "Please enter a consumption"
@@ -95,6 +103,9 @@ const FormBody = ({
         dataSource: dataSource,
       };
       setData((prevData) => [customData, ...prevData]);
+      clearForm();
+      setDataSource("");
+      setConsumption("");
       setLastDeleted();
     }
   };

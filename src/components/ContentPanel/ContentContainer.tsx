@@ -103,6 +103,7 @@ const ContentContainer = () => {
 
         <InputForm
           setData={setData}
+          data={data}
           setLastDeleted={() => setLastDeleted({ item: null, index: null })}
         />
 

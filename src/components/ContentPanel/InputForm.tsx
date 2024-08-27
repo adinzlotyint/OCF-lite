@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import data from "../../configs/DefaultTemplate.json";
+import DefaultTemplate from "../../configs/DefaultTemplate.json";
 import FormBody, { customData } from "./FormBody";
 import FormHeader from "./FormHeader";
 
@@ -16,9 +16,14 @@ export interface Data {
 interface InputFormProps {
   setData: React.Dispatch<React.SetStateAction<customData[]>>;
   setLastDeleted: () => void;
+  data: customData[];
 }
 
-const InputForm: React.FC<InputFormProps> = ({ setData, setLastDeleted }) => {
+const InputForm: React.FC<InputFormProps> = ({
+  setData,
+  setLastDeleted,
+  data,
+}) => {
   const [selectedScope, setSelectedScope] = useState<string>("Scope 1");
   const [selectedType, setSelectedType] = useState<string>("");
   const [selectedName, setSelectedName] = useState<string>("");
@@ -35,9 +40,9 @@ const InputForm: React.FC<InputFormProps> = ({ setData, setLastDeleted }) => {
     dataSource: "",
   });
 
-  const scopesArray = Object.keys(data);
+  const scopesArray = Object.keys(DefaultTemplate);
 
-  const someObj: Data = data;
+  const someObj: Data = DefaultTemplate;
 
   const handleScopeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const scope = event.target.value;
@@ -119,6 +124,7 @@ const InputForm: React.FC<InputFormProps> = ({ setData, setLastDeleted }) => {
             }}
             clearForm={clearForm}
             setLastDeleted={setLastDeleted}
+            data={data}
           />
         </form>
         {hasErrors() !== "" && (
