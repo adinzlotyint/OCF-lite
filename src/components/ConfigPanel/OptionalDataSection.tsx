@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { countries } from "../../configs/CountriesList";
-import { OptionalDataContext } from "../../App";
+import { OptionalDataContext } from "../../hooks/Contexts";
 
 const OptionalDataSection = () => {
   const { optionalData, setOptionalData } = useContext(OptionalDataContext);

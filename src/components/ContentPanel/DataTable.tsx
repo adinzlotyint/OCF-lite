@@ -5,7 +5,6 @@ import "../../index.css";
 import RestoreLastChange from "./RestoreLastChange";
 
 interface DataTableProps {
-  data: customData[];
   fromScratch: boolean;
   handleRowDelete: (index: number) => void;
   deletingIndex: number | null;

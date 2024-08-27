@@ -1,22 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DataTable from "./DataTable";
 import InputForm from "./InputForm";
-import { customData } from "./FormBody";
 import SearchButton from "./SearchButton";
 import RemoveAllButton from "./RemoveAllButton";
 import { useCreateJSON } from "../../hooks/CreateJSON";
+import { TableData, TableDataContext } from "../../hooks/Contexts";
 
 const ContentContainer = () => {
   const createCSV = useCreateJSON();
-  const [data, setData] = useState<customData[]>(() => {
-    const storedData = localStorage.getItem("tableData");
-    return storedData ? JSON.parse(storedData) : [];
-  });
+  const { tableData, setTableData } = useContext(TableDataContext);
   const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
-  const [filteredData, setFilteredData] = useState<customData[]>([]);
+  const [filteredData, setFilteredData] = useState<TableData[]>([]);
   const [searchText, setSearchText] = useState("");
   const [lastDeleted, setLastDeleted] = useState<{
-    item: customData | customData[] | null; // Allow item to be either a single item or an array
+    item: TableData | TableData[] | null; // Allow item to be either a single item or an array
     index: number | null;
   }>({ item: null, index: null });
 
@@ -26,8 +23,8 @@ const ContentContainer = () => {
     setDeletingIndex(index);
     setLastDeleted({ item: itemToDelete, index }); // Track the last deleted item as a single item
     setTimeout(() => {
-      const newData = data.filter((item) => item !== itemToDelete);
-      setData(newData);
+      const newData = tableData.filter((item) => item !== itemToDelete);
+      setTableData(newData);
       setDeletingIndex(null);
     }, 500);
   };
@@ -37,7 +34,7 @@ const ContentContainer = () => {
     if (storedData) {
       try {
         const parsedData = JSON.parse(storedData);
-        setData(parsedData);
+        setTableData(parsedData);
       } catch (error) {
         console.error("Failed to parse data:", error);
       }
@@ -46,20 +43,20 @@ const ContentContainer = () => {
 
   // Save data to Local Storage whenever it changes
   useEffect(() => {
-    console.log("Data updated:", data);
-    localStorage.setItem("tableData", JSON.stringify(data));
+    console.log("Data updated:", tableData);
+    localStorage.setItem("tableData", JSON.stringify(tableData));
     updateFilteredData();
-  }, [data]);
+  }, [tableData]);
 
   const handleRemoveAll = () => {
-    if (data.length > 0) {
-      setLastDeleted({ item: data, index: null }); // Save all data before removing
-      setData([]); // Clear the data
+    if (tableData.length > 0) {
+      setLastDeleted({ item: tableData, index: null }); // Save all data before removing
+      setTableData([]); // Clear the data
     }
   };
   const updateFilteredData = () => {
     const lowerValue = searchText.toLowerCase();
-    const searchedData = data.filter((item) => {
+    const searchedData = tableData.filter((item) => {
       return (
         item.scope.toLowerCase().includes(lowerValue) ||
         item.activity.toLowerCase().includes(lowerValue) ||
@@ -80,12 +77,12 @@ const ContentContainer = () => {
     if (lastDeleted.item) {
       if (Array.isArray(lastDeleted.item)) {
         // Restore all data if it was a "Remove All" action
-        setData(lastDeleted.item);
+        setTableData(lastDeleted.item);
       } else if (lastDeleted.index !== null) {
         // Restore a single deleted item
-        const newData = [...data];
+        const newData = [...tableData];
         newData.splice(lastDeleted.index, 0, lastDeleted.item);
-        setData(newData);
+        setTableData(newData);
       }
       setLastDeleted({ item: null, index: null }); // Clear the last deleted state after restoration
     }
@@ -102,14 +99,11 @@ const ContentContainer = () => {
         </p>
 
         <InputForm
-          setData={setData}
-          data={data}
           setLastDeleted={() => setLastDeleted({ item: null, index: null })}
         />
 
         <div className="flex-grow 2xl:min-h-[285px] sm:min-h-[100px] max-h-[500px] sm:max-h-[calc(100vh-500px)] overflow-hidden">
           <DataTable
-            data={data}
             filteredData={filteredData}
             fromScratch={false}
             handleRowDelete={handleRowDelete}
@@ -126,12 +120,12 @@ const ContentContainer = () => {
           />
           <button
             className={`row-start-1 md:col-span-1 col-span-2 md:mb-0 btn btn-neutral ${
-              data.length === 0
+              tableData.length === 0
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-primary hover:bg-primary"
             } shadow-lg rounded-lg w-full min-h-8 h-8 font-roboto font-bold text-white place-self-center`}
-            disabled={data.length === 0}
-            onClick={() => createCSV(data)}
+            disabled={tableData.length === 0}
+            onClick={() => createCSV(tableData)}
           >
             Download to file
           </button>

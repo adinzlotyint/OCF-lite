@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DefaultTemplate from "../../configs/DefaultTemplate.json";
-import FormBody, { customData } from "./FormBody";
+import FormBody from "./FormBody";
 import FormHeader from "./FormHeader";
 
 export interface Data {
@@ -14,16 +14,10 @@ export interface Data {
 }
 
 interface InputFormProps {
-  setData: React.Dispatch<React.SetStateAction<customData[]>>;
   setLastDeleted: () => void;
-  data: customData[];
 }
 
-const InputForm: React.FC<InputFormProps> = ({
-  setData,
-  setLastDeleted,
-  data,
-}) => {
+const InputForm: React.FC<InputFormProps> = ({ setLastDeleted }) => {
   const [selectedScope, setSelectedScope] = useState<string>("Scope 1");
   const [selectedType, setSelectedType] = useState<string>("");
   const [selectedName, setSelectedName] = useState<string>("");
@@ -118,13 +112,11 @@ const InputForm: React.FC<InputFormProps> = ({
             handleTypeChange={handleTypeChange}
             handleNameChange={handleNameChange}
             handleUnitChange={handleUnitChange}
-            setData={setData}
             changeError={(newErrors) => {
               setErrors(newErrors);
             }}
             clearForm={clearForm}
             setLastDeleted={setLastDeleted}
-            data={data}
           />
         </form>
         {hasErrors() !== "" && (

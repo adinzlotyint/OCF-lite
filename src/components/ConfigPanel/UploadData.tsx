@@ -1,33 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import UploadFrame from "./BeforeTemplateUploadFrame";
-import Ajv, { JSONSchemaType } from "ajv";
-
-interface Template {
-  id: string;
-  name: string;
-}
+import Ajv from "ajv";
+import schema from "../../interfaces/json";
+import { TableDataContext } from "../../hooks/Contexts";
+import FileFrame from "./AfterTemplateUploadFrame";
 
 const ajv = new Ajv();
+const validate = ajv.compile(schema);
 
-const templateSchema: JSONSchemaType<Template[]> = {
-  type: "array",
-  items: {
-    type: "object",
-    properties: {
-      id: { type: "string" },
-      name: { type: "string" },
-    },
-    required: ["id", "name"],
-    additionalProperties: true,
-  },
-};
+const UploadTemplate = () => {
+  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+  const { setTableData } = useContext(TableDataContext);
 
-const validateTemplate = ajv.compile(templateSchema);
-
-const UploadData = () => {
-  const [selectedFile, setSelectedFile] = useState<Template[]>([]);
-
-  // Function to store the uploaded file in the state and update the dropdown lists accordingly
   const handleTemplateUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length === 1) {
       const file = event.target.files[0];
@@ -38,16 +22,14 @@ const UploadData = () => {
           try {
             const jsonData = JSON.parse(e.target.result);
 
-            if (validateTemplate(jsonData)) {
-              setSelectedFile(jsonData);
-              console.log(jsonData);
+            if (validate(jsonData)) {
+              setSelectedFile(file.name);
+              setTableData(jsonData.data);
             } else {
-              console.error("Invalid JSON structure", validateTemplate.errors);
-              // Handle invalid JSON structure (e.g., show an error message to the user)
+              console.error("Invalid JSON structure", validate.errors);
             }
           } catch (error) {
             console.error("Error parsing JSON", error);
-            // Handle JSON parse error (e.g., show an error message to the user)
           }
         }
       };
@@ -56,15 +38,14 @@ const UploadData = () => {
   };
 
   return (
-    <>
-      <div className="mt-4">
-        {selectedFile.length === 0 && (
-          <UploadFrame onUpload={handleTemplateUpload} />
-        )}
-        {/* {selectedFile.length !== 0 && <FileFrame fileName={fileName} />} */}
-      </div>
-    </>
+    <div className="mt-4">
+      {!selectedFile ? (
+        <UploadFrame onUpload={handleTemplateUpload} />
+      ) : (
+        <FileFrame fileName={selectedFile} />
+      )}
+    </div>
   );
 };
 
-export default UploadData;
+export default UploadTemplate;

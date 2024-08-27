@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AddButton from "./AddButton";
+import { TableDataContext } from "../../hooks/Contexts";
 
 interface Props {
   nameList: string[];
@@ -19,10 +20,8 @@ interface Props {
     unit: string;
     dataSource: string;
   }) => void;
-  setData: React.Dispatch<React.SetStateAction<customData[]>>;
   clearForm: () => void;
   setLastDeleted: () => void;
-  data: customData[];
 }
 
 export interface customData {
@@ -46,11 +45,10 @@ const FormBody = ({
   handleNameChange,
   handleUnitChange,
   changeError,
-  setData,
   setLastDeleted,
   clearForm,
-  data,
 }: Props) => {
+  const { tableData, setTableData } = useContext(TableDataContext);
   const [dataSource, setDataSource] = useState<string>("");
   const [consumption, setConsumption] = useState<string>("");
 
@@ -72,8 +70,8 @@ const FormBody = ({
       emissionSource:
         selectedName === ""
           ? "Please select an emission source"
-          : data.filter((item) => item.emissionSource === selectedName).length >
-            0
+          : tableData.filter((item) => item.emissionSource === selectedName)
+              .length > 0
           ? "Emission source already exists"
           : "",
       consumption:
@@ -102,7 +100,7 @@ const FormBody = ({
         unit: selectedUnit,
         dataSource: dataSource,
       };
-      setData((prevData) => [customData, ...prevData]);
+      setTableData((prevData) => [customData, ...prevData]);
       clearForm();
       setDataSource("");
       setConsumption("");
