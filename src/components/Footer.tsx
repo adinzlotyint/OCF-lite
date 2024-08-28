@@ -2,7 +2,11 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaGithubSquare } from "react-icons/fa";
 
-const Footer = () => {
+interface Props {
+  setPage: (page: 0 | 1 | 2) => void;
+}
+
+const Footer = ({ setPage }: Props) => {
   return (
     <>
       <footer className="grid xl:grid-cols-3 bg-primary h-full pt-3 pb-2">
@@ -12,11 +16,17 @@ const Footer = () => {
         <div className="row-start-1 col-span-2 xl:col-span-1 text-white font-roboto text-xs mb-3 h-full">
           <ul className="grid h-full items-center text-center grid-cols-footerGrid">
             <li></li>
-            <li>Reporting</li>
+            <li>
+              <button onClick={() => setPage(0)}>Reporting</button>
+            </li>
             <li>|</li>
-            <li>Manual</li>
+            <li>
+              <button onClick={() => setPage(1)}>Manual</button>
+            </li>
             <li>|</li>
-            <li>Contact</li>
+            <li>
+              <button onClick={() => setPage(2)}>Contact</button>
+            </li>
             <li></li>
           </ul>
         </div>

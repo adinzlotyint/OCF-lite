@@ -1,4 +1,8 @@
-const NavBar = () => {
+interface Props {
+  setPage: (page: 0 | 1 | 2) => void;
+}
+
+const NavBar = ({ setPage }: Props) => {
   return (
     <div className="z-50 fixed flex top-0 left-0 right-0 bg-white h-16 justify-between items-center shadow-md hover:shadow-lg transition-all 2xl:ml-4 2xl:mt-8 2xl:mr-8 2xl:static 2xl:border-transparent 2xl:rounded-2xl">
       {/* Logo */}
@@ -33,13 +37,13 @@ const NavBar = () => {
           className="font-roboto menu menu-sm dropdown-content bg-primary text-white rounded-box z-[1] mt-3 w-64 2xl:w-52 p-2 shadow-lg"
         >
           <li>
-            <a>Reporting</a>
+            <a onClick={() => setPage(0)}>Reporting</a>
           </li>
           <li>
-            <a>Manual</a>
+            <a onClick={() => setPage(1)}>Manual</a>
           </li>
           <li>
-            <a>Contact</a>
+            <a onClick={() => setPage(2)}>Contact</a>
           </li>
         </ul>
       </div>

@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AddButton from "./AddButton";
-import { TableDataContext } from "../../hooks/Contexts";
+import { SelectsTemplateContext, TableDataContext } from "../../hooks/Contexts";
 
 interface Props {
   nameList: string[];
@@ -48,6 +48,7 @@ const FormBody = ({
   setLastDeleted,
   clearForm,
 }: Props) => {
+  const { selectsTemplate } = useContext(SelectsTemplateContext);
   const { tableData, setTableData } = useContext(TableDataContext);
   const [dataSource, setDataSource] = useState<string>("");
   const [consumption, setConsumption] = useState<string>("");
@@ -107,6 +108,12 @@ const FormBody = ({
       setLastDeleted();
     }
   };
+
+  useEffect(() => {
+    clearForm();
+    setDataSource("");
+    setConsumption("");
+  }, [selectsTemplate]);
 
   return (
     <>
