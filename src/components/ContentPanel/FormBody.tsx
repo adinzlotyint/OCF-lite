@@ -123,7 +123,7 @@ const FormBody = ({
       </p>
       <select
         onChange={handleTypeChange}
-        className="input-custom mt-1 xl:col-start-1 xl:row-start-2 row-start-2 col-start-1"
+        className="select-custom mt-1 xl:col-start-1 xl:row-start-2 row-start-2 col-start-1"
         value={selectedType}
         disabled={typeList.length === 0}
       >
@@ -141,7 +141,7 @@ const FormBody = ({
       </p>
       <select
         onChange={handleNameChange}
-        className="input-custom mt-1 xl:col-start-2 xl:row-start-2 row-start-4"
+        className="select-custom mt-1 xl:col-start-2 xl:row-start-2 row-start-4"
         value={selectedName}
         disabled={nameList.length === 0}
       >
@@ -159,16 +159,17 @@ const FormBody = ({
       </p>
       <input
         type="text"
-        className="input-custom mt-1 xl:col-start-3 xl:row-start-2 row-start-6 pl-1"
+        className="input-custom mt-1 xl:col-start-3 xl:row-start-2 row-start-6"
         value={consumption}
         onChange={handleConsumptionChange}
+        placeholder="Enter consumption"
       />
       <p className="xl:col-start-4 xl:row-start-1 row-start-7 input-headers">
         Unit
       </p>
       <select
         onChange={handleUnitChange}
-        className="input-custom mt-1 xl:col-start-4 xl:row-start-2 row-start-8"
+        className="select-custom mt-1 xl:col-start-4 xl:row-start-2 row-start-8"
         value={selectedUnit}
         disabled={unitList.length === 0}
       >
@@ -187,13 +188,14 @@ const FormBody = ({
       <input
         id="dataSource"
         type="text"
-        className="input-custom mt-1 xl:col-start-5 xl:row-start-2 row-start-10 pl-1"
+        className="input-custom mt-1 xl:col-start-5 xl:row-start-2 row-start-10"
         value={dataSource}
         onChange={handleDataSourceChange}
+        placeholder="Enter data source"
       />
       <AddButton
         onClick={handleSubmit}
-        className="btn w-1/2 sm:w-1/4 xl:w-8 border-gray-300 btn-square center min-h-8 size-8 btn-outline xl:col-start-6 col-start-1 xl:row-start-2 row-start-11 mt-3 xl:mt-0 mx-auto font-roboto hover:bg-primary transition-all duration-300 ease-in-out"
+        className="btn rounded-md w-1/2 sm:w-1/4 xl:w-8 border-gray-300 btn-square center min-h-8 size-8 btn-outline xl:col-start-6 col-start-1 xl:row-start-2 row-start-11 mt-3 xl:mt-1 mx-auto font-roboto hover:bg-primary transition-all duration-300 ease-in-out"
       />
     </>
   );

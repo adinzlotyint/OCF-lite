@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
 import ContentContainer from "./components/ContentPanel/ContentContainer";
 import Footer from "./components/Footer";
@@ -18,10 +18,20 @@ import ContactPage from "./components/ContentPanel/ContactPage";
 function App() {
   // 0 - reporting, 1 - manual, 2 - contact
   const [currPage, setCurrPage] = useState<0 | 1 | 2>(0);
+  const isFirstRender = useRef(true); // Track first render
+  const manualRef = useRef<HTMLDivElement>(null);
   const [optionalData, setOptionalData] = useState<OptionalData>(() => {
     const storedOptionalData = localStorage.getItem("optionalData");
     return storedOptionalData ? JSON.parse(storedOptionalData) : [];
   });
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else if (manualRef.current) {
+      manualRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currPage]);
 
   const [tableData, setTableData] = useState<TableData[]>(() => {
     const storedData = localStorage.getItem("tableData");
@@ -45,10 +55,13 @@ function App() {
               <div className="w-full 2xl:col-start-1 2xl:col-end-2 2xl:row-start-1 2xl:row-end-4 col-start-1 row-start-2">
                 <ConfigPanel />
               </div>
-              <div className="w-full 2xl:col-start-2 2xl:row-start-2 2xl:row-end-4 col-start-1 row-start-3 flex flex-col h-full">
-                {currPage == 0 && <ContentContainer />}
-                {currPage == 1 && <ManualPage />}
-                {currPage == 2 && <ContactPage />}
+              <div
+                ref={manualRef}
+                className="w-full 2xl:col-start-2 2xl:row-start-2 2xl:row-end-4 col-start-1 row-start-3 flex flex-col h-full"
+              >
+                {currPage === 0 && <ContentContainer />}
+                {currPage === 1 && <ManualPage />}
+                {currPage === 2 && <ContactPage />}
               </div>
             </SelectsTemplateContext.Provider>
           </TableDataContext.Provider>

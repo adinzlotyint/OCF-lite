@@ -31,9 +31,19 @@ const Footer = ({ setPage }: Props) => {
           </ul>
         </div>
         <div className="row-start-2 xl:row-start-1  flex justify-end items-end text-white font-roboto text-xs mt-2 xl:mt-0">
-          <FaLinkedin className="w-fit xl:h-full sm:h-8 h-12 mr-2" />
+          <FaLinkedin
+            className="w-fit xl:h-full sm:h-8 h-12 mr-2 cursor-pointer"
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/in/adrian-zi%C4%99tek-440366177/"
+              )
+            }
+          />
           <FaFacebookSquare className="w-fit xl:h-full sm:h-8 h-12 mr-0 sm:mr-2" />
-          <FaGithubSquare className="w-fit xl:h-full sm:h-8 h-12 mr-0 ml-2 sm:mr-2" />
+          <FaGithubSquare
+            className="w-fit xl:h-full sm:h-8 h-12 mr-0 ml-2 sm:ml-0 sm:mr-2 cursor-pointer"
+            onClick={() => window.open("https://github.com/adinzlotyint")}
+          />
         </div>
       </footer>
     </>

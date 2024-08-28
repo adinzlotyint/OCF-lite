@@ -52,7 +52,7 @@ const DataTable: React.FC<DataTableProps> = ({
                 <td className="break-words">{item.consumption}</td>
                 <td className="break-words">{item.unit}</td>
                 <td className="break-all min-w-36">{item.dataSource}</td>
-                <td className="p-2 text-center sticky right-0 bg-white shadow-lg">
+                <td className="p-2 text-center sticky right-0 bg-white">
                   <button onClick={() => handleRowDelete(index)}>
                     <FaTrashAlt className="text-lg" />
                   </button>

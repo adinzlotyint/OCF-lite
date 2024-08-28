@@ -36,7 +36,7 @@ const ConfigPanel = () => {
       <div className="collapse collapse-arrow custom-accordion">
         <input type="radio" name="my-accordion-1" />
         <div className="collapse-title text-base font-medium">
-          Import Custom Data
+          Import Previous Data
           <span className="block text-xs font-roboto text-gray-500 font-normal">
             Upload a file to import your data, replacing the current entries in
             table.
