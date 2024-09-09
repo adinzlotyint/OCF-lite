@@ -23,5 +23,3 @@ One of the features will also include the ability to create a custom file that w
 - CSS
 - Tailwind CSS
 - Vite
-
---
