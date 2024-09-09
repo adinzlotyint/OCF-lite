@@ -22,7 +22,14 @@ function App() {
   const manualRef = useRef<HTMLDivElement>(null);
   const [optionalData, setOptionalData] = useState<OptionalData>(() => {
     const storedOptionalData = localStorage.getItem("optionalData");
-    return storedOptionalData ? JSON.parse(storedOptionalData) : [];
+    return storedOptionalData
+      ? JSON.parse(storedOptionalData)
+      : {
+          country: "",
+          company: "",
+          fullName: "",
+          email: "",
+        };
   });
 
   useEffect(() => {

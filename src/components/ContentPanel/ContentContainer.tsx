@@ -7,7 +7,7 @@ import { useCreateJSON } from "../../hooks/CreateJSON";
 import { TableData, TableDataContext } from "../../hooks/Contexts";
 
 const ContentContainer = () => {
-  const createCSV = useCreateJSON();
+  const download = useCreateJSON();
   const { tableData, setTableData } = useContext(TableDataContext);
   const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
   const [filteredData, setFilteredData] = useState<TableData[]>([]);
@@ -124,7 +124,7 @@ const ContentContainer = () => {
                 : "bg-primary hover:bg-primary"
             } shadow-lg rounded-lg w-full min-h-8 h-8 font-roboto font-bold text-white place-self-center`}
             disabled={tableData.length === 0}
-            onClick={() => createCSV(tableData)}
+            onClick={() => download(tableData)}
           >
             Download to file
           </button>

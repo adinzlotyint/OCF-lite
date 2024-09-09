@@ -6,13 +6,13 @@ export const useCreateJSON = () => {
   const { optionalData } = useContext(OptionalDataContext);
 
   const createJSON = (data: customData[]) => {
-    // Prepare the JSON object
+    // Prepare the JSON object with explicit default values
     const jsonData = {
       optionalData: {
-        country: optionalData.country,
-        company: optionalData.company,
-        fullName: optionalData.fullName,
-        email: optionalData.email,
+        country: optionalData.country ?? "",
+        company: optionalData.company ?? "",
+        fullName: optionalData.fullName ?? "",
+        email: optionalData.email ?? "",
       },
       data,
     };
