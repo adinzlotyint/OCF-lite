@@ -69,3 +69,22 @@ export const SelectsTemplateContext = createContext<SelectsTemplateContextType>(
     setSelectsTemplate: () => {},
   }
 );
+
+export type LastRemovedItems = {
+  item: TableData | TableData[] | null; // Allow item to be either a single item or an array
+  index: number | null;
+};
+
+type LastRemovedItemsContextType = {
+  LastRemovedItems: LastRemovedItems;
+  setLastRemovedItems: React.Dispatch<React.SetStateAction<LastRemovedItems>>;
+};
+
+export const LastRemovedItemsContext =
+  createContext<LastRemovedItemsContextType>({
+    LastRemovedItems: {
+      item: null,
+      index: null,
+    },
+    setLastRemovedItems: () => {},
+  });

@@ -4,7 +4,11 @@ import InputForm from "./InputForm";
 import SearchButton from "./SearchButton";
 import RemoveAllButton from "./RemoveAllButton";
 import { useCreateJSON } from "../../hooks/CreateJSON";
-import { TableData, TableDataContext } from "../../hooks/Contexts";
+import {
+  TableData,
+  TableDataContext,
+  LastRemovedItemsContext,
+} from "../../hooks/Contexts";
 
 const ContentContainer = () => {
   const download = useCreateJSON();
@@ -12,16 +16,15 @@ const ContentContainer = () => {
   const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
   const [filteredData, setFilteredData] = useState<TableData[]>([]);
   const [searchText, setSearchText] = useState("");
-  const [lastDeleted, setLastDeleted] = useState<{
-    item: TableData | TableData[] | null; // Allow item to be either a single item or an array
-    index: number | null;
-  }>({ item: null, index: null });
+  const { LastRemovedItems, setLastRemovedItems } = useContext(
+    LastRemovedItemsContext
+  );
 
   // const fromScratch = false;
   const handleRowDelete = (index: number) => {
     const itemToDelete = filteredData[index];
     setDeletingIndex(index);
-    setLastDeleted({ item: itemToDelete, index }); // Track the last deleted item as a single item
+    setLastRemovedItems({ item: itemToDelete, index }); // Track the last deleted item as a single item
     setTimeout(() => {
       const newData = tableData.filter((item) => item !== itemToDelete);
       setTableData(newData);
@@ -49,7 +52,7 @@ const ContentContainer = () => {
 
   const handleRemoveAll = () => {
     if (tableData.length > 0) {
-      setLastDeleted({ item: tableData, index: null }); // Save all data before removing
+      setLastRemovedItems({ item: tableData, index: null }); // Save all data before removing
       setTableData([]); // Clear the data
     }
   };
@@ -73,17 +76,17 @@ const ContentContainer = () => {
   }, [searchText]);
 
   const handleRestore = () => {
-    if (lastDeleted.item) {
-      if (Array.isArray(lastDeleted.item)) {
+    if (LastRemovedItems.item) {
+      if (Array.isArray(LastRemovedItems.item)) {
         // Restore all data if it was a "Remove All" action
-        setTableData(lastDeleted.item);
-      } else if (lastDeleted.index !== null) {
+        setTableData(LastRemovedItems.item);
+      } else if (LastRemovedItems.index !== null) {
         // Restore a single deleted item
         const newData = [...tableData];
-        newData.splice(lastDeleted.index, 0, lastDeleted.item);
+        newData.splice(LastRemovedItems.index, 0, LastRemovedItems.item);
         setTableData(newData);
       }
-      setLastDeleted({ item: null, index: null }); // Clear the last deleted state after restoration
+      setLastRemovedItems({ item: null, index: null }); // Clear the last deleted state after restoration
     }
   };
 
@@ -98,7 +101,9 @@ const ContentContainer = () => {
         </p>
 
         <InputForm
-          setLastDeleted={() => setLastDeleted({ item: null, index: null })}
+          setLastDeleted={() =>
+            setLastRemovedItems({ item: null, index: null })
+          }
         />
 
         <div className="flex-grow 2xl:min-h-[285px] sm:min-h-[100px] max-h-[500px] sm:max-h-[calc(100vh-500px)] overflow-hidden">
@@ -108,7 +113,7 @@ const ContentContainer = () => {
             handleRowDelete={handleRowDelete}
             deletingIndex={deletingIndex}
             handleRestore={handleRestore}
-            lastDeleted={lastDeleted.item} // Pass the last deleted item for RestoreLastChange component
+            lastDeleted={LastRemovedItems.item} // Pass the last deleted item for RestoreLastChange component
           />
         </div>
 

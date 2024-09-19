@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import UploadFrame from "./UploadFrame";
 import Ajv from "ajv";
 import schema from "../../interfaces/TableDataJSON";
+import { LastRemovedItemsContext } from "../../hooks/Contexts";
 import { TableDataContext, OptionalDataContext } from "../../hooks/Contexts";
 
 const ajv = new Ajv();
@@ -14,7 +15,7 @@ const UploadTemplate = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { setTableData } = useContext(TableDataContext);
   const { setOptionalData } = useContext(OptionalDataContext);
-
+  const { setLastRemovedItems } = useContext(LastRemovedItemsContext);
   const handleTemplateUpload = (
     event:
       | React.ChangeEvent<HTMLInputElement>
@@ -41,6 +42,7 @@ const UploadTemplate = () => {
             if (validate(jsonData)) {
               setTableData(jsonData.data);
               setOptionalData(jsonData.optionalData);
+              setLastRemovedItems({ item: null, index: null });
               setMessage("", "success");
             } else {
               setMessage("Invalid JSON structure", "error");
