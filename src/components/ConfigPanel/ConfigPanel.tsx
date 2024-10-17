@@ -6,7 +6,7 @@ import OptionalDataSection from "./OptionalDataSection.tsx";
 
 const ConfigPanel = () => {
   return (
-    <div className="flex flex-col bg-white mb-8 2xl:mb-0 mt-8 2xl:mr-4 sm:mr-[25%] mr-0 2xl:ml-8 sm:ml-[25%] min-w-[50%] ml-0 p-6 rounded-none sm:rounded-2xl shadow-lg hover:shadow-xl transition-all">
+    <div className="flex flex-col bg-white mb-8 2xl:mb-0 mt-8 2xl:ml-4 sm:mr-[25%] mr-0 2xl:mr-8 sm:ml-[25%] min-w-[50%] ml-0 p-6 rounded-none sm:rounded-2xl shadow-lg hover:shadow-xl transition-all">
       {/* Header section */}
       <div className="w-full rounded-2xl bg-primary flex justify-center mb-2">
         <div className="p-[1vw]">

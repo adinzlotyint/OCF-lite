@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import DataTable from "./DataTable";
-import InputForm from "./InputForm";
-import SearchButton from "./SearchButton";
-import RemoveAllButton from "./RemoveAllButton";
+import DataTable from "./ReportingPage/DataTable";
+import InputForm from "./ReportingPage/InputForm";
+import SearchButton from "./ReportingPage/SearchButton";
+import RemoveAllButton from "./ReportingPage/RemoveAllButton";
 import { useCreateJSON } from "../../hooks/CreateJSON";
 import {
   TableData,
   TableDataContext,
   LastRemovedItemsContext,
 } from "../../hooks/Contexts";
+import { FaCog } from "react-icons/fa";
+import { FaC } from "react-icons/fa6";
 
 const ContentContainer = () => {
   const download = useCreateJSON();
@@ -92,13 +94,18 @@ const ContentContainer = () => {
 
   return (
     <>
-      <div className="flex flex-col h-full p-6 bg-white 2xl:ml-4 ml-0 sm:ml-8 sm:mr-8 mr-0 sm:rounded-2xl rounded-none shadow-lg hover:shadow-xl transition-all">
-        <p className="text-lg font-roboto font-bold">
-          Data Table
-          <span className="block text-xs font-roboto text-gray-500 font-normal">
-            Report data for any year
-          </span>
-        </p>
+      <div className="flex flex-col h-full p-6 bg-white 2xl:mr-4 ml-0 sm:ml-8 sm:mr-8 mr-0 sm:rounded-2xl rounded-none shadow-lg hover:shadow-xl transition-all">
+        <div className="flex justify-between">
+          <p className="text-lg font-roboto font-bold">
+            Data Table
+            <span className="block text-xs font-roboto text-gray-500 font-normal">
+              Report data for any year
+            </span>
+          </p>
+          <div className="h-full flex items-center">
+            <FaCog className="cursor-pointer"></FaCog>
+          </div>
+        </div>
 
         <InputForm
           setLastDeleted={() =>

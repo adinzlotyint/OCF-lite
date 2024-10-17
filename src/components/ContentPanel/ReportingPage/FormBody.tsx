@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import AddButton from "./AddButton";
-import { SelectsTemplateContext, TableDataContext } from "../../hooks/Contexts";
+import {
+  SelectsTemplateContext,
+  TableDataContext,
+} from "../../../hooks/Contexts";
 
 interface Props {
   nameList: string[];

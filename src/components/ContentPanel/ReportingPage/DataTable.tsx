@@ -1,7 +1,7 @@
 import React from "react";
 import { customData } from "./FormBody";
 import { FaTrashAlt } from "react-icons/fa";
-import "../../index.css";
+import "../../../index.css";
 import RestoreLastChange from "./RestoreLastChange";
 
 interface DataTableProps {
