@@ -61,7 +61,7 @@ const DataTable: React.FC<DataTableProps> = ({
             ))
           ) : (
             <tr className="border border-none">
-              <td colSpan={7} className="text-center  text-gray-300 text-2xl">
+              <td colSpan={7} className="text-center  text-gray-300 text-xl">
                 No data available. Add some entries to populate the table.
               </td>
             </tr>

@@ -13,9 +13,9 @@ const FormHeader = ({
 }: Props) => {
   return (
     <>
-      <select onChange={handleScopeChange} className="scope-custom">
+      <select onChange={handleScopeChange} className="scope-custom ">
         {scopesArray.map((scope) => (
-          <option key={scope} value={scope} className="bg-primary text-white">
+          <option key={scope} value={scope} className="bg-primary text-white ">
             {scope}
           </option>
         ))}

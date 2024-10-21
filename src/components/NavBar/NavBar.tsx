@@ -4,10 +4,10 @@ interface Props {
 
 const NavBar = ({ setPage }: Props) => {
   return (
-    <div className="z-50 fixed flex top-0 left-0 right-0 bg-white h-16 justify-between items-center shadow-md hover:shadow-lg transition-all 2xl:mr-4 2xl:mt-8 2xl:ml-8 2xl:static 2xl:border-transparent 2xl:rounded-2xl">
+    <div className="z-50 fixed flex top-0 left-0 right-0 bg-white h-16 justify-between items-center shadow-md hover:shadow-lg transition-all xl:ml-4 xl:mt-8 xl:mr-8 xl:static xl:border-transparent xl:rounded-xl">
       {/* Logo */}
-      <p className="font-bold text-2xl ml-2 font-roboto text-secondary">
-        <a className="btn btn-ghost text-xl">OCF lite</a>
+      <p className="font-bold text-xl ml-2 font-roboto text-secondary">
+        <a className="ml-4 text-xl select-none">Balance Vision</a>
       </p>
       <div className="dropdown dropdown-bottom dropdown-end">
         {/* Dropdown button */}
@@ -34,7 +34,7 @@ const NavBar = ({ setPage }: Props) => {
         {/* Dropdown menu */}
         <ul
           tabIndex={0}
-          className="font-roboto menu menu-sm dropdown-content bg-primary text-white rounded-box z-[1] mt-3 w-64 2xl:w-52 p-2 shadow-lg"
+          className="font-roboto menu menu-sm dropdown-content bg-primary text-white rounded-box z-[1] mt-3 w-64 xl:w-52 p-2 shadow-lg"
         >
           <li>
             <a onClick={() => setPage(0)}>Reporting</a>
