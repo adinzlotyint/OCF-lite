@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
-import ContentContainer from "./components/ContentPanel/ContentContainer";
+import ReportingPage from "./components/ContentPanel/ReportingPage";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import ManualPage from "./components/ContentPanel/ManualPage";
@@ -12,6 +12,7 @@ function App() {
   const [currPage, setCurrPage] = useState<0 | 1 | 2>(0);
   const isFirstRender = useRef(true); // Track first render
   const manualRef = useRef<HTMLDivElement>(null);
+  const [showSettingsClicked, setShowSettingsClicked] = useState(false);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -23,19 +24,29 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="grid 2xl:grid-rows-layout 2xl:grid-cols-[1fr_2fr] grid-rows-layout2 grid-cols-1 flex-grow">
-        <div className="w-full 2xl:col-start-2 2xl:row-start-1 col-start-1 row-start-1">
+      <div className="grid xl:grid-rows-layout xl:grid-cols-[1fr_5fr] grid-rows-layout2 grid-cols-1 flex-grow">
+        <div className="w-full xl:col-start-2 xl:row-start-1 col-start-1 row-start-1">
           <NavBar setPage={(page: 0 | 1 | 2) => setCurrPage(page)} />
         </div>
         <CombinedContexts>
-          <div className="w-full 2xl:col-start-1 2xl:col-end-2 2xl:row-start-1 2xl:row-end-4 col-start-1 row-start-2">
+          <div
+            className={`w-full min-w-[300px] ${
+              showSettingsClicked ? "block" : "hidden"
+            } xl:block xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-4 col-start-1 row-start-2`}
+          >
             <ConfigPanel />
           </div>
           <div
             ref={manualRef}
-            className="w-full 2xl:col-start-2 2xl:row-start-2 2xl:row-end-4 col-start-1 row-start-3 flex flex-col h-full"
+            className="w-full xl:col-start-2 xl:row-start-2 xl:row-end-4 col-start-1 row-start-3 flex flex-col h-full"
           >
-            {currPage === 0 && <ContentContainer />}
+            {currPage === 0 && (
+              <ReportingPage
+                showConfigPanel={() =>
+                  setShowSettingsClicked(!showSettingsClicked)
+                }
+              />
+            )}
             {currPage === 1 && <ManualPage />}
             {currPage === 2 && <ContactPage />}
           </div>

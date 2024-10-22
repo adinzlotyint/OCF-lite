@@ -10,50 +10,56 @@ const ContactPage = () => {
         </p>
 
         <div className="mt-4">
+          <h2 className="text-md font-roboto font-semibold">Emails:</h2>
+          <a
+            href="mailto:katarzyna.polikowska@bureauveritas.com"
+            className="text-sm font-roboto text-blue-500 hover:underline"
+          >
+            katarzyna.polikowska@bureauveritas.com
+          </a>{" "}
+          <br />
+          <a
+            href="mailto:adrian.zietek@bureauveritas.com"
+            className="text-sm font-roboto text-blue-500 hover:underline"
+          >
+            adrian.zietek@bureauveritas.com
+          </a>{" "}
+          <br />
+          <a
+            href="mailto:anna.ostapczenia@bureauveritas.com"
+            className="text-sm font-roboto text-blue-500 hover:underline"
+          >
+            anna.ostapczenia@bureauveritas.com
+          </a>
+        </div>
+
+        <div className="mt-4">
           <h2 className="text-md font-roboto font-semibold">Address:</h2>
           <p className="text-sm font-roboto text-gray-700">
-            123 Green Street, Suite 456
+            BUREAU VERITAS POLSKA SP. Z O.O.
             <br />
-            Sustainability City, SC 78910
-            <br />
-            Poland
+            ul. Migdałowa 4, 02-796 Warsaw, Poland
           </p>
         </div>
-
+        <div className="flex-grow mt-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.305070652743!2d21.053505931478576!3d52.1469614994608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47192d7bc7feecab%3A0x71bdaac974bb02bc!2sBureau%20Veritas%20Polska!5e0!3m2!1spl!2spl!4v1729589526331!5m2!1spl!2spl"
+            className="w-full h-full"
+            style={{ border: "0" }}
+            loading="lazy"
+            allowFullScreen
+          ></iframe>
+        </div>
         <div className="mt-4">
-          <h2 className="text-md font-roboto font-semibold">Email:</h2>
-          <p className="text-sm font-roboto text-gray-700">
-            koszm593@gmail.com
+          <p className="text-lg font-roboto font-bold">
+            Privacy policy
+            <span className="block text-xs font-roboto text-gray-500 font-normal">
+              We respect your privacy. Any information you enter will be
+              securely stored in your browser's local storage, ensuring that
+              your data is available when you return. <br /> Rest assured, none
+              of your information will be shared or transmitted.
+            </span>
           </p>
-        </div>
-
-        <div className="mt-4">
-          <h2 className="text-md font-roboto font-semibold">Phone:</h2>
-          <p className="text-sm font-roboto text-gray-700">+1 (234) 567-8901</p>
-        </div>
-
-        <div className="mt-4">
-          <h2 className="text-md font-roboto font-semibold">GitHub:</h2>
-          <a
-            href="https://github.com/adinzlotyint"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-roboto text-blue-500 hover:underline"
-          >
-            github.com/adinzlotyint
-          </a>
-        </div>
-
-        <div className="mt-4">
-          <h2 className="text-md font-roboto font-semibold">LinkedIn:</h2>
-          <a
-            href="https://www.linkedin.com/in/adrian-zi%C4%99tek-440366177/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-roboto text-blue-500 hover:underline"
-          >
-            linkedin.com/in/adrian-zietek
-          </a>
         </div>
       </div>
     </>

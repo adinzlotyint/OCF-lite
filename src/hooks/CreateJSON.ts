@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { OptionalDataContext } from "../hooks/Contexts";
-import { customData } from "../components/ContentPanel/FormBody";
+import { customData } from "../components/ContentPanel/ReportingPage/FormBody";
 
 export const useCreateJSON = () => {
   const { optionalData } = useContext(OptionalDataContext);

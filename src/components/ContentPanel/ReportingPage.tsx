@@ -1,16 +1,22 @@
 import { useContext, useEffect, useState } from "react";
-import DataTable from "./DataTable";
-import InputForm from "./InputForm";
-import SearchButton from "./SearchButton";
-import RemoveAllButton from "./RemoveAllButton";
+import DataTable from "./ReportingPage/DataTable";
+import InputForm from "./ReportingPage/InputForm";
+import SearchButton from "./ReportingPage/SearchButton";
+import RemoveAllButton from "./ReportingPage/RemoveAllButton";
 import { useCreateJSON } from "../../hooks/CreateJSON";
 import {
   TableData,
   TableDataContext,
   LastRemovedItemsContext,
 } from "../../hooks/Contexts";
+import { FaCog } from "react-icons/fa";
+import OptionalDataSection from "./ReportingPage/OptionalDataSection";
 
-const ContentContainer = () => {
+interface Props {
+  showConfigPanel: () => void;
+}
+
+const ContentContainer = ({ showConfigPanel }: Props) => {
   const download = useCreateJSON();
   const { tableData, setTableData } = useContext(TableDataContext);
   const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
@@ -92,13 +98,21 @@ const ContentContainer = () => {
 
   return (
     <>
-      <div className="flex flex-col h-full p-6 bg-white 2xl:ml-4 ml-0 sm:ml-8 sm:mr-8 mr-0 sm:rounded-2xl rounded-none shadow-lg hover:shadow-xl transition-all">
-        <p className="text-lg font-roboto font-bold">
-          Data Table
-          <span className="block text-xs font-roboto text-gray-500 font-normal">
-            Report data for any year
-          </span>
-        </p>
+      <div className="flex flex-col h-full p-6 bg-white xl:ml-4 ml-0 sm:ml-8 sm:mr-8 mr-0 sm:rounded-xl rounded-none shadow-lg hover:shadow-xl transition-all">
+        <div className="flex justify-between">
+          <p className="text-lg font-roboto font-bold">
+            Data Table
+            <span className="block text-xs font-roboto text-gray-500 font-normal">
+              Report your organization emissions data
+            </span>
+          </p>
+          <div className="h-full flex items-center">
+            <FaCog
+              className="cursor-pointer"
+              onClick={() => showConfigPanel()}
+            />
+          </div>
+        </div>
 
         <InputForm
           setLastDeleted={() =>
@@ -106,7 +120,7 @@ const ContentContainer = () => {
           }
         />
 
-        <div className="flex-grow 2xl:min-h-[285px] sm:min-h-[100px] max-h-[500px] sm:max-h-[calc(100vh-500px)] overflow-hidden">
+        <div className="flex-grow xl:min-h-[285px] sm:min-h-[100px] max-h-[500px] sm:max-h-[calc(100vh-500px)] overflow-hidden">
           <DataTable
             filteredData={filteredData}
             fromScratch={false}
@@ -115,6 +129,10 @@ const ContentContainer = () => {
             handleRestore={handleRestore}
             lastDeleted={LastRemovedItems.item} // Pass the last deleted item for RestoreLastChange component
           />
+        </div>
+
+        <div className="w-full h-50px">
+          <OptionalDataSection className="border border-spacing-1 rounded-md my-3 p-4"></OptionalDataSection>
         </div>
 
         <div className="grid grid-rows-2 md:grid-rows-1 grid-cols-2 md:grid-cols-3 mt-4 justify-center items-center">
