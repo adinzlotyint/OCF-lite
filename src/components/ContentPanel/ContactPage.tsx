@@ -34,16 +34,17 @@ const ContactPage = () => {
         </div>
 
         <div className="mt-4">
-          <h2 className="text-md font-roboto font-semibold">Address:</h2>
-          <p className="text-sm font-roboto text-gray-700">
-            BUREAU VERITAS POLSKA SP. Z O.O.
-            <br />
-            ul. Migdałowa 4, 02-796 Warsaw, Poland
-          </p>
+          <h2 className="text-md font-roboto font-semibold">
+            Address:{" "}
+            <span className="block text-xs font-roboto text-gray-500 font-normal">
+              BUREAU VERITAS POLSKA SP. Z O.O. - Migdałowa 4, 02-796 Warsaw,
+              Poland
+            </span>
+          </h2>
         </div>
         <div className="flex-grow mt-4">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.305070652743!2d21.053505931478576!3d52.1469614994608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47192d7bc7feecab%3A0x71bdaac974bb02bc!2sBureau%20Veritas%20Polska!5e0!3m2!1spl!2spl!4v1729589526331!5m2!1spl!2spl"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.305066666182!2d21.055807277308062!3d52.14696157196576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47192d7bc7feecab%3A0x71bdaac974bb02bc!2sBureau%20Veritas%20Polska!5e0!3m2!1sen!2spl!4v1729596243191!5m2!1sen!2spl"
             className="w-full h-full"
             style={{ border: "0" }}
             loading="lazy"
