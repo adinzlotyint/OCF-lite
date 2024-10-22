@@ -103,7 +103,7 @@ const ContentContainer = ({ showConfigPanel }: Props) => {
           <p className="text-lg font-roboto font-bold">
             Data Table
             <span className="block text-xs font-roboto text-gray-500 font-normal">
-              Report data for any year
+              Report your organization emissions data
             </span>
           </p>
           <div className="h-full flex items-center">

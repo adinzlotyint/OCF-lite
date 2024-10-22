@@ -37,12 +37,22 @@ const OptionalDataSection = ({ className }: Props) => {
     <>
       <div className={className}>
         <p className="text-lg font-roboto font-bold">
-          Optional Data
+          Additional Information
           <span className="block text-xs font-roboto text-gray-500 font-normal">
-            Report data for any year
+            Providing this information will help to identify the source of the
+            data. All fields below are optional.
           </span>
         </p>
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-4">
+          <input
+            type="number"
+            className="input-custom mr-4"
+            placeholder="Enter the reported year"
+            name="year"
+            min="1900"
+            max="2099"
+            step="1"
+          />
           <input
             type="text"
             className="input-custom mr-4"
@@ -57,7 +67,6 @@ const OptionalDataSection = ({ className }: Props) => {
               <option key={country} value={country} />
             ))}
           </datalist>
-
           <input
             type="text"
             className="input-custom mr-4"
