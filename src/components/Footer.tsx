@@ -31,21 +31,17 @@ const Footer = ({ setPage }: Props) => {
         <div className="row-start-2 xl:row-start-1  flex justify-end items-end text-white font-roboto text-xs mt-2 xl:mt-0">
           <FaLinkedin
             className="w-fit xl:h-full sm:h-8 h-12 mr-2 cursor-pointer"
-            onClick={() =>
-              window.open(
-                "https://www.linkedin.com/company/bureau-veritas-group/"
-              )
-            }
+            onClick={() => window.open("https://www.linkedin.com")}
           />
           <FaFacebookSquare
             className="w-fit xl:h-full sm:h-8 h-12 mr-0 sm:mr-2 cursor-pointer"
-            onClick={() =>
-              window.open("https://www.facebook.com/bureauveritasgroup/")
-            }
+            onClick={() => window.open("https://www.facebook.com/")}
           />
           <TbWorldWww
             className="w-fit xl:h-full sm:h-8 h-12 mr-0 ml-2 sm:ml-0 sm:mr-2 cursor-pointer"
-            onClick={() => window.open("https://group.bureauveritas.com/")}
+            onClick={() =>
+              window.open("https://adinzlotyint.github.io/OCF-lite/")
+            }
           />
         </div>
       </footer>
