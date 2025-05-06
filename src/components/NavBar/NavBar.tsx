@@ -7,7 +7,7 @@ const NavBar = ({ setPage }: Props) => {
     <div className="z-50 fixed flex top-0 left-0 right-0 bg-white h-16 justify-between items-center shadow-md hover:shadow-lg transition-all xl:ml-4 xl:mt-8 xl:mr-8 xl:static xl:border-transparent xl:rounded-xl">
       {/* Logo */}
       <p className="font-bold text-xl ml-2 font-roboto text-secondary">
-        <a className="ml-4 text-xl select-none">Balance Vision</a>
+        <a className="ml-4 text-xl select-none">OCF Lite</a>
       </p>
       <div className="dropdown dropdown-bottom dropdown-end">
         {/* Dropdown button */}
