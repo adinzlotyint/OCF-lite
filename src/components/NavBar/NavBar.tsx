@@ -4,11 +4,7 @@ interface Props {
 
 const NavBar = ({ setPage }: Props) => {
   return (
-    <div className="z-50 fixed flex top-0 left-0 right-0 bg-white h-16 justify-between items-center shadow-md hover:shadow-lg transition-all xl:ml-4 xl:mt-8 xl:mr-8 xl:static xl:border-transparent xl:rounded-xl">
-      {/* Logo */}
-      <p className="font-bold text-xl ml-2 font-roboto text-secondary">
-        <a className="ml-4 text-xl select-none">OCF Lite</a>
-      </p>
+    <div className="z-50 fixed flex top-0 left-0 right-0 bg-primary h-16 justify-end items-center shadow-md hover:shadow-lg transition-all xl:ml-4 xl:mt-8 xl:mr-8 xl:static xl:border-transparent xl:rounded-xl">
       <div className="dropdown dropdown-bottom dropdown-end">
         {/* Dropdown button */}
         <div
@@ -18,7 +14,7 @@ const NavBar = ({ setPage }: Props) => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-primary"
+            className="h-5 w-5 text-white"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

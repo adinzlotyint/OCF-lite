@@ -1,14 +1,12 @@
 import UploadTemplate from "./UploadTemplate.tsx";
 import UploadData from "./UploadData.tsx";
-// import Logo from "../../assets/Logo.tsx";
-import { FaReact } from "react-icons/fa";
+import bvLogo from "../../assets/bv-logo.png";
 
 const ConfigPanel = () => {
   return (
     <div className="flex flex-col bg-white mb-8 xl:mb-0 mt-8 xl:mr-4 sm:mr-[25%] mr-0 xl:ml-8 sm:ml-[25%] ml-0 p-6 rounded-none sm:rounded-xl shadow-lg hover:shadow-xl transition-all">
-      <div className="w-full rounded-xl bg-primary flex justify-center mb-2 h-[200px]">
-        {/* <Logo className="h-full"></Logo> */}
-        <FaReact color="white" className="h-full w-1/2" />
+      <div className="w-full rounded-xl bg-primary flex justify-center items-center mb-2 h-[200px]">
+        <img src={bvLogo} alt="BV Logo" className="h-36" />
       </div>
 
       <div className="collapse collapse-arrow custom-accordion">

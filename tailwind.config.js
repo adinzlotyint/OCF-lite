@@ -5,11 +5,12 @@ module.exports = {
     extend: {
       colors: {
         bgcolor: "#F0F0F0",
-        primary: "#212121",
-        secondary: "#313131",
+        primary: "#00049E",
+        secondary: "#706F6F",
+        accent: "#2C32FF",
       },
       fontFamily: {
-        roboto: ["Roboto"],
+        roboto: ["Arial", "sans-serif"],
       },
       gridTemplateRows: {
         layout: "125px auto",

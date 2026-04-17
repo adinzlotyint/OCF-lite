@@ -6,8 +6,10 @@ import NavBar from "./components/NavBar/NavBar";
 import ManualPage from "./components/ContentPanel/ManualPage";
 import ContactPage from "./components/ContentPanel/ContactPage";
 import { CombinedContexts } from "./hooks/CombinedContexts";
+import AccessGate from "./components/AccessGate";
 
 function App() {
+  const [unlocked, setUnlocked] = useState(false);
   // 0 - reporting, 1 - manual, 2 - contact
   const [currPage, setCurrPage] = useState<0 | 1 | 2>(0);
   const isFirstRender = useRef(true); // Track first render
@@ -21,6 +23,10 @@ function App() {
       manualRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [currPage]);
+
+  if (!unlocked) {
+    return <AccessGate onUnlock={() => setUnlocked(true)} />;
+  }
 
   return (
     <div className="flex flex-col min-h-screen">

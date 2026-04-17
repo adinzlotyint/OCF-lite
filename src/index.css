@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sankofa+Display&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: Arial, sans-serif;
+}
 
 .btn-custom {
     @apply font-bold font-roboto mr-8 text-secondary hover:text-black relative;
@@ -18,7 +19,7 @@
   -webkit-appearance: none; /* Remove default styling in WebKit browsers */
   -moz-appearance: none; /* Remove default styling in Firefox */
   appearance: none; /* Standard property to remove default styling */
-  font-family: 'Roboto', sans-serif; /* Ensure consistent font */
+  font-family: Arial, sans-serif; /* Ensure consistent font */
   background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>'); /* Custom arrow as SVG */
   background-repeat: no-repeat;
   background-position: right 0.5rem center; /* Position the arrow on the right side */
