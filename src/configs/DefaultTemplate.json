@@ -1,0 +1,203 @@
+{
+    "Scope 1": {
+      "Gaseous fuels": {
+        "Butane": ["liters", "tonnes", "kWh"],
+        "CNG": ["liters", "tonnes", "kWh"],
+        "LNG": ["liters", "tonnes", "kWh"],
+        "LPG": ["liters", "tonnes", "kWh"],
+        "Natural gas": ["liters", "tonnes", "kWh"],
+        "Natural gas (100% mineral blend)": ["liters", "tonnes", "kWh"],
+        "Other petroleum gas": ["liters", "tonnes", "kWh"],
+        "Propane": ["liters", "tonnes", "kWh"]
+      },
+      "Liquid fuels": {
+        "Aviation spirit": ["liters", "tonnes", "kWh"],
+        "Aviation turbine fuel": ["liters", "tonnes", "kWh"],
+        "Burning oil": ["liters", "tonnes", "kWh"],
+        "Diesel (average biofuel blend)": ["liters", "tonnes", "kWh"],
+        "Diesel (100% mineral diesel)": ["liters", "tonnes", "kWh"],
+        "Fuel oil": ["liters", "tonnes", "kWh"],
+        "Gas oil": ["liters", "tonnes", "kWh"],
+        "Lubricants": ["liters", "tonnes", "kWh"],
+        "Naphtha": ["liters", "tonnes", "kWh"],
+        "Petrol (average biofuel blend)": ["liters", "tonnes", "kWh"],
+        "Petrol (100% mineral petrol)": ["liters", "tonnes", "kWh"],
+        "Processed fuel oils - residual oils": ["liters", "tonnes", "kWh"],
+        "Processed fuel oils - distillate oils": ["liters", "tonnes", "kWh"],
+        "Refinery miscellaneous": ["liters", "tonnes", "kWh"],
+        "Waste oils": ["liters", "tonnes", "kWh"],
+        "Marine gas oil": ["liters", "tonnes", "kWh"],
+        "Marine fuel oil": ["liters", "tonnes", "kWh"]
+      },
+      "Solid fuels": {
+        "Coal (industrial)": ["tonnes", "kWh"],
+        "Coal (electricity generation)": ["tonnes", "kWh"],
+        "Coal (domestic)": ["tonnes", "kWh"],
+        "Coking coal": ["tonnes", "kWh"],
+        "Petroleum coke": ["tonnes", "kWh"],
+        "Coal (electricity generation - home produced coal only)": ["tonnes", "kWh"]
+      },
+      "Refrigerants": {
+        "R401A": ["kg"],
+        "R401B": ["kg"],
+        "R401C": ["kg"],
+        "R402A": ["kg"],
+        "R402B": ["kg"],
+        "R403A": ["kg"],
+        "R403B": ["kg"],
+        "R404A": ["kg"],
+        "R405A": ["kg"],
+        "R406A": ["kg"],
+        "R407A": ["kg"],
+        "R407B": ["kg"],
+        "R407C": ["kg"],
+        "R407D": ["kg"],
+        "R407E": ["kg"],
+        "R407F": ["kg"],
+        "R408A": ["kg"],
+        "R409A": ["kg"],
+        "R409B": ["kg"],
+        "R410A": ["kg"],
+        "R410B": ["kg"],
+        "R411A": ["kg"],
+        "R411B": ["kg"],
+        "R412A": ["kg"],
+        "R413A": ["kg"],
+        "R414A": ["kg"],
+        "R414B": ["kg"],
+        "R415A": ["kg"],
+        "R415B": ["kg"],
+        "R416A": ["kg"],
+        "R417A": ["kg"],
+        "R417B": ["kg"],
+        "R417C": ["kg"],
+        "R418A": ["kg"],
+        "R419A": ["kg"],
+        "R419B": ["kg"],
+        "R420A": ["kg"],
+        "R421A": ["kg"],
+        "R421B": ["kg"],
+        "R422A": ["kg"],
+        "R422B": ["kg"],
+        "R422C": ["kg"],
+        "R422D": ["kg"],
+        "R422E": ["kg"],
+        "R423A": ["kg"],
+        "R424A": ["kg"],
+        "R425A": ["kg"],
+        "R426A": ["kg"],
+        "R427A": ["kg"],
+        "R428A": ["kg"],
+        "R429A": ["kg"],
+        "R430A": ["kg"],
+        "R431A": ["kg"],
+        "R432A": ["kg"],
+        "R433A": ["kg"],
+        "R433B": ["kg"],
+        "R433C": ["kg"],
+        "R434A": ["kg"],
+        "R435A": ["kg"],
+        "R436A": ["kg"],
+        "R436B": ["kg"],
+        "R437A": ["kg"],
+        "R438A": ["kg"],
+        "R439A": ["kg"],
+        "R440A": ["kg"],
+        "R441A": ["kg"],
+        "R442A": ["kg"],
+        "R443A": ["kg"],
+        "R444A": ["kg"],
+        "R445A": ["kg"],
+        "R500": ["kg"],
+        "R501": ["kg"],
+        "R502": ["kg"],
+        "R503": ["kg"],
+        "R504": ["kg"],
+        "R505": ["kg"],
+        "R506": ["kg"],
+        "R507A": ["kg"],
+        "R508A": ["kg"],
+        "R508B": ["kg"],
+        "R509A": ["kg"],
+        "R510A": ["kg"],
+        "R511A": ["kg"],
+        "R512A": ["kg"]
+      }
+    },
+    "Scope 2": {
+      "Electricity": {
+        "Electricity from grid": ["kWh"],
+        "Electricity from renewable sources": ["kWh"]
+      },
+      "Heat and steam": {
+        "Onsite heat and steam": ["kWh"],
+        "District heat and steam": ["kWh"]
+      }
+    },
+    "Scope 3": {
+      "Cat. 1 - Purchased good and services": {
+        "Agricultural products": ["kg"],
+        "Chemicals": ["kg"],
+        "Construction": ["kg"],
+        "Electronics": ["kg"],
+        "Food and beverages": ["kg"],
+        "Fuels and lubricants": ["kg"],
+        "Machinery and equipment": ["kg"],
+        "Metals": ["kg"],
+        "Minerals": ["kg"],
+        "Paper and paper products": ["kg"],
+        "Plastics": ["kg"],
+        "Textiles": ["kg"],
+        "Wood and wood products": ["kg"]
+      },
+      "Cat. 2 - Capital goods": {
+        "Buildings": ["kg"],
+        "Equipment": ["kg"],
+        "Infrastructure": ["kg"],
+        "Vehicles": ["kg"]
+      },
+      "Cat. 3 - Fuel and energy related activities": {
+        "Fuel extraction": ["kg"],
+        "Fuel production": ["kg"],
+        "Fuel transportation": ["kg"],
+        "Fuel processing": ["kg"],
+        "Fuel distribution": ["kg"]
+      },
+      "Cat. 4 - Upstream transportation and distribution": {
+        "Transportation and distribution": ["kg"]
+      },
+      "Cat. 5 - Waste generated in operations": {
+        "Waste generated in operations": ["kg"]
+      },
+      "Cat. 6 - Business travel": {
+        "Business travel": ["kg"]
+      },
+      "Cat. 7 - Employee commuting": {
+        "Employee commuting": ["kg"]
+      },
+      "Cat. 8 - Upstream leased assets": {
+        "Upstream leased assets": ["kg"]
+      },
+      "Cat. 9 - Downstream transportation and distribution": {
+        "Downstream transportation and distribution": ["kg"]
+      },
+      "Cat. 10 - Processing of sold products": {
+        "Processing of sold products": ["kg"]
+      },
+      "Cat. 11 - Use of sold products": {
+        "Use of sold products": ["kg"]
+      },
+      "Cat. 12 - End of life treatment of sold products": {
+        "End of life treatment of sold products": ["kg"]
+      },
+      "Cat. 13 - Downstream leased assets": {
+        "Downstream leased assets": ["kg"]
+      },
+      "Cat. 14 - Franchises": {
+        "Franchises": ["kg"]
+      },
+      "Cat. 15 - Investments": {
+        "Investments": ["kg"]
+      }
+    }
+  }
